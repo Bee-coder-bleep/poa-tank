@@ -7,439 +7,253 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --blue:       #0a3d62;
-      --sky:        #1e90ff;
-      --aqua:       #00c9c8;
-      --white:      #f5faff;
-      --off:        #e8f4fd;
-      --dark:       #071f33;
-      --text:       #1a3a52;
-      --muted:      #5b7d96;
-      --green:      #25d366;
-      --accent:     #f0a500;
+      --blue:   #0a3d62;
+      --sky:    #1e90ff;
+      --aqua:   #00c9c8;
+      --white:  #f5faff;
+      --off:    #e8f4fd;
+      --dark:   #071f33;
+      --text:   #1a3a52;
+      --muted:  #5b7d96;
+      --green:  #25d366;
+      --accent: #f0a500;
+      --red:    #e74c3c;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
 
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: var(--white);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
+    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; width: 100%; z-index: 999;
-      background: rgba(7,31,51,0.96);
-      backdrop-filter: blur(8px);
+      background: rgba(7,31,51,0.97); backdrop-filter: blur(8px);
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 6vw;
-      height: 68px;
-      border-bottom: 2px solid var(--aqua);
+      padding: 0 5vw; height: 68px; border-bottom: 2px solid var(--aqua);
     }
-    .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
-      color: var(--white);
-      letter-spacing: 2px;
-    }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--white); letter-spacing: 2px; text-decoration: none; }
     .nav-logo span { color: var(--aqua); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      color: #c8dff0;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      transition: color 0.2s;
-    }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: #c8dff0; text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--aqua); }
-    .nav-cta {
-      background: var(--aqua);
-      color: var(--dark) !important;
-      padding: 0.45rem 1.2rem;
-      border-radius: 30px;
-      font-weight: 700 !important;
-      transition: background 0.2s !important;
-    }
-    .nav-cta:hover { background: #00e5e4 !important; color: var(--dark) !important; }
+    .nav-cta { background: var(--aqua) !important; color: var(--dark) !important; padding: 0.4rem 1.1rem; border-radius: 30px; font-weight: 700 !important; }
 
-    /* ── HERO ── */
+    /* HERO */
     #hero {
       min-height: 100vh;
       background: linear-gradient(135deg, var(--dark) 0%, #0a3d62 55%, #005f8e 100%);
-      display: flex; align-items: center;
-      padding: 100px 6vw 60px;
-      position: relative;
-      overflow: hidden;
+      display: flex; align-items: center; padding: 110px 5vw 70px;
+      position: relative; overflow: hidden;
     }
     #hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300c9c8' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2300c9c8' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/svg%3E");
     }
-    .hero-content { max-width: 600px; position: relative; z-index: 2; }
-    .hero-badge {
-      display: inline-block;
-      background: var(--aqua);
-      color: var(--dark);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 0.3rem 1rem;
-      border-radius: 20px;
-      margin-bottom: 1.4rem;
-    }
-    .hero-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3.5rem, 8vw, 6.5rem);
-      line-height: 0.95;
-      color: var(--white);
-      letter-spacing: 1px;
-      margin-bottom: 1.4rem;
-    }
+    .hero-content { max-width: 580px; position: relative; z-index: 2; }
+    .hero-badge { display: inline-block; background: var(--aqua); color: var(--dark); font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 0.3rem 1rem; border-radius: 20px; margin-bottom: 1.4rem; }
+    .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 8vw, 6.5rem); line-height: 0.95; color: var(--white); margin-bottom: 1.4rem; }
     .hero-title span { color: var(--aqua); }
-    .hero-sub {
-      font-size: 1.1rem;
-      color: #9dc8e8;
-      line-height: 1.7;
-      margin-bottom: 2.5rem;
-      max-width: 480px;
-    }
+    .hero-sub { font-size: 1.05rem; color: #9dc8e8; line-height: 1.7; margin-bottom: 2.5rem; max-width: 460px; }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--aqua);
-      color: var(--dark);
-      padding: 0.85rem 2rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      text-decoration: none;
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 20px rgba(0,201,200,0.35);
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,201,200,0.45); }
-    .btn-secondary {
-      background: transparent;
-      color: var(--white);
-      padding: 0.85rem 2rem;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      border: 2px solid rgba(255,255,255,0.3);
-      transition: border-color 0.2s, background 0.2s;
-    }
+    .btn-primary { background: var(--aqua); color: var(--dark); padding: 0.85rem 2rem; border-radius: 50px; font-weight: 700; font-size: 0.95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,201,200,0.35); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,201,200,0.45); }
+    .btn-secondary { background: transparent; color: var(--white); padding: 0.85rem 2rem; border-radius: 50px; font-weight: 600; font-size: 0.95rem; text-decoration: none; border: 2px solid rgba(255,255,255,0.3); transition: border-color 0.2s, background 0.2s; }
     .btn-secondary:hover { border-color: var(--aqua); background: rgba(0,201,200,0.1); }
-
-    /* hero wave */
-    .hero-wave {
-      position: absolute; bottom: -2px; left: 0; width: 100%;
-    }
-
-    /* hero image collage */
+    .hero-wave { position: absolute; bottom: -2px; left: 0; width: 100%; }
     .hero-img-wrap {
-      position: absolute;
-      right: 4vw; top: 50%; transform: translateY(-50%);
-      width: min(420px, 40vw);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 10px;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
-      z-index: 2;
+      position: absolute; right: 4vw; top: 50%; transform: translateY(-50%);
+      width: min(420px, 40vw); display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px; border-radius: 20px; overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5); z-index: 2;
     }
-    .hero-img-wrap img {
-      width: 100%; height: 160px;
-      object-fit: cover;
-    }
-    .hero-img-wrap img:first-child {
-      grid-column: 1 / -1;
-      height: 220px;
-    }
+    .hero-img-wrap img { width: 100%; height: 160px; object-fit: cover; }
+    .hero-img-wrap img:first-child { grid-column: 1/-1; height: 220px; }
 
-    /* ── STATS ── */
-    #stats {
-      background: var(--blue);
-      padding: 3rem 6vw;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 2rem;
-      text-align: center;
-    }
-    .stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 3rem;
-      color: var(--aqua);
-      line-height: 1;
-    }
-    .stat-label { font-size: 0.85rem; color: #9dc8e8; margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 1px; }
+    /* STATS */
+    #stats { background: var(--blue); padding: 3rem 5vw; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 2rem; text-align: center; }
+    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--aqua); line-height: 1; }
+    .stat-label { font-size: 0.8rem; color: #9dc8e8; margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* ── SECTIONS SHARED ── */
-    section { padding: 90px 6vw; }
-    .section-tag {
-      font-size: 0.75rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 3px;
-      color: var(--aqua);
-      margin-bottom: 0.6rem;
-    }
-    .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
-      color: var(--blue);
-      line-height: 1.05;
-      margin-bottom: 1rem;
-    }
-    .section-sub {
-      font-size: 1rem; color: var(--muted);
-      max-width: 540px;
-      line-height: 1.7;
-    }
+    /* SHARED SECTION */
+    section { padding: 90px 5vw; }
+    .section-tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: var(--aqua); margin-bottom: 0.5rem; }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem,5vw,3.8rem); color: var(--blue); line-height: 1.05; margin-bottom: 1rem; }
+    .section-sub { font-size: 1rem; color: var(--muted); max-width: 540px; line-height: 1.7; }
 
-    /* ── ABOUT ── */
-    #about {
-      background: var(--white);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    .about-img {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(10,61,98,0.2);
-    }
+    /* ABOUT */
+    #about { background: var(--white); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-img { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(10,61,98,0.2); }
     .about-img img { width: 100%; height: 420px; object-fit: cover; display: block; }
-    .about-img::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 6px;
-      background: linear-gradient(90deg, var(--aqua), var(--sky));
-    }
+    .about-img::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--aqua), var(--sky)); }
     .about-list { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; }
-    .about-list li {
-      display: flex; align-items: center; gap: 0.7rem;
-      font-size: 0.95rem; color: var(--text);
-    }
-    .about-list li::before {
-      content: '✓';
-      background: var(--aqua); color: var(--dark);
-      width: 22px; height: 22px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.7rem; font-weight: 700;
-      flex-shrink: 0;
-    }
+    .about-list li { display: flex; align-items: center; gap: 0.7rem; font-size: 0.95rem; }
+    .about-list li::before { content: '✓'; background: var(--aqua); color: var(--dark); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; }
 
-    /* ── GALLERY ── */
-    #gallery { background: var(--off); }
-    .gallery-header { margin-bottom: 2.5rem; }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: auto auto;
-      gap: 14px;
+    /* CATALOG */
+    #catalog { background: var(--off); }
+    .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 2rem; margin-top: 2.5rem; }
+    .catalog-card {
+      background: var(--white); border-radius: 18px; overflow: hidden;
+      box-shadow: 0 6px 30px rgba(10,61,98,0.1); border: 1px solid #dceef8;
+      transition: transform 0.25s, box-shadow 0.25s; position: relative;
     }
-    .gallery-item {
-      overflow: hidden;
-      border-radius: 12px;
-      cursor: pointer;
-      position: relative;
+    .catalog-card:hover { transform: translateY(-6px); box-shadow: 0 18px 50px rgba(10,61,98,0.18); }
+    .catalog-badge { position: absolute; top: 12px; left: 12px; background: var(--red); color: #fff; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.75rem; border-radius: 20px; z-index: 2; }
+    .catalog-img { width: 100%; height: 215px; object-fit: cover; display: block; }
+    .catalog-body { padding: 1.3rem 1.4rem 1.6rem; }
+    .catalog-name { font-weight: 700; font-size: 1rem; color: var(--blue); margin-bottom: 0.45rem; }
+    .catalog-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; margin-bottom: 1rem; }
+    .catalog-pricing { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 1.1rem; flex-wrap: wrap; }
+    .price-was { font-size: 0.88rem; color: var(--muted); text-decoration: line-through; }
+    .price-now { font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; color: var(--blue); letter-spacing: 0.5px; }
+    .price-save { font-size: 0.7rem; font-weight: 700; background: #fff0f0; color: var(--red); padding: 0.2rem 0.55rem; border-radius: 10px; }
+    .btn-order {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      width: 100%; background: linear-gradient(135deg, var(--aqua), var(--sky));
+      color: var(--dark); font-weight: 700; font-size: 0.9rem;
+      padding: 0.78rem 1rem; border-radius: 50px; text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(0,201,200,0.3);
     }
-    .gallery-item img {
-      width: 100%; height: 220px;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-      display: block;
-    }
+    .btn-order:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(0,201,200,0.45); }
+
+    /* GALLERY */
+    #gallery { background: var(--white); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-top: 2.5rem; }
+    .gallery-item { overflow: hidden; border-radius: 12px; position: relative; }
+    .gallery-item img { width: 100%; height: 220px; object-fit: cover; transition: transform 0.4s; display: block; }
     .gallery-item:hover img { transform: scale(1.06); }
     .gallery-item:nth-child(1) { grid-column: span 2; }
     .gallery-item:nth-child(1) img { height: 300px; }
-    .gallery-item::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(7,31,51,0.5) 0%, transparent 50%);
-      opacity: 0; transition: opacity 0.3s;
-    }
+    .gallery-item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,31,51,0.5),transparent 50%); opacity: 0; transition: opacity 0.3s; }
     .gallery-item:hover::after { opacity: 1; }
 
-    /* ── PRICES ── */
-    #prices { background: var(--white); }
-    .price-intro { margin-bottom: 2.5rem; }
-    .price-table-wrap {
-      overflow-x: auto;
-      border-radius: 16px;
-      box-shadow: 0 8px 40px rgba(10,61,98,0.12);
-    }
-    table {
-      width: 100%; border-collapse: collapse;
-      font-size: 0.95rem;
-    }
-    thead {
-      background: linear-gradient(90deg, var(--blue), #0d5289);
-    }
-    thead th {
-      color: var(--white); padding: 1.1rem 1.8rem;
-      text-align: left; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 1px;
-      font-size: 0.8rem;
-    }
+    /* PRICES */
+    #prices { background: var(--off); }
+    .price-table-wrap { overflow-x: auto; border-radius: 16px; box-shadow: 0 8px 40px rgba(10,61,98,0.12); margin-top: 2rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    thead { background: linear-gradient(90deg, var(--blue), #0d5289); }
+    thead th { color: var(--white); padding: 1.1rem 1.8rem; text-align: left; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.78rem; }
     tbody tr:nth-child(even) { background: var(--off); }
     tbody tr:nth-child(odd) { background: var(--white); }
-    tbody tr { transition: background 0.15s; }
     tbody tr:hover { background: #d0eeff; }
-    tbody td { padding: 0.9rem 1.8rem; color: var(--text); }
+    tbody td { padding: 0.9rem 1.8rem; }
     tbody td:first-child { font-weight: 600; }
-    tbody td:last-child { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--blue); letter-spacing: 0.5px; }
-    .price-note {
-      margin-top: 1.2rem;
-      font-size: 0.85rem;
-      color: var(--muted);
-      font-style: italic;
-    }
+    tbody td:last-child { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--blue); }
+    .price-note { margin-top: 1.2rem; font-size: 0.83rem; color: var(--muted); font-style: italic; }
 
-    /* ── WHY US ── */
-    #why { background: var(--off); }
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2.5rem;
-    }
-    .card {
-      background: var(--white);
-      border-radius: 16px;
-      padding: 2rem 1.6rem;
-      box-shadow: 0 4px 20px rgba(10,61,98,0.08);
-      border-top: 4px solid var(--aqua);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+    /* WHY US */
+    #why { background: var(--white); }
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px,1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .card { background: var(--white); border-radius: 16px; padding: 2rem 1.5rem; box-shadow: 0 4px 20px rgba(10,61,98,0.08); border-top: 4px solid var(--aqua); transition: transform 0.2s, box-shadow 0.2s; }
     .card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(10,61,98,0.14); }
     .card-icon { font-size: 2.2rem; margin-bottom: 1rem; }
     .card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--blue); }
-    .card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+    .card p { font-size: 0.87rem; color: var(--muted); line-height: 1.6; }
 
-    /* ── CONTACT ── */
+    /* LOCATIONS */
+    #locations { background: var(--off); }
+    .location-cards { display: flex; flex-direction: column; gap: 1rem; margin-top: 2.5rem; max-width: 700px; }
+    .loc-card {
+      background: var(--white); border-radius: 14px; padding: 1.2rem 1.4rem;
+      border-left: 5px solid var(--aqua);
+      box-shadow: 0 4px 16px rgba(10,61,98,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .loc-card:hover { transform: translateX(4px); box-shadow: 0 8px 24px rgba(10,61,98,0.14); }
+    .loc-card.kisumu  { border-color: var(--sky); }
+    .loc-card.mombasa { border-color: var(--accent); }
+    .loc-city { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 0.3rem; }
+    .loc-name { font-weight: 700; font-size: 0.97rem; color: var(--blue); margin-bottom: 0.2rem; }
+    .loc-addr { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+    /* CONTACT */
     #contact { background: linear-gradient(135deg, var(--dark) 0%, var(--blue) 100%); color: var(--white); text-align: center; }
     #contact .section-title { color: var(--white); }
     #contact .section-sub { color: #9dc8e8; margin: 0 auto 2.5rem; }
     .contact-btns { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 3rem; }
-    .btn-call {
-      background: var(--sky);
-      color: var(--white);
-      padding: 1rem 2.2rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1rem;
-      text-decoration: none;
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      box-shadow: 0 6px 25px rgba(30,144,255,0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn-call:hover { transform: translateY(-3px); box-shadow: 0 10px 35px rgba(30,144,255,0.55); }
-    .btn-wa {
-      background: var(--green);
-      color: var(--white);
-      padding: 1rem 2.2rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1rem;
-      text-decoration: none;
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      box-shadow: 0 6px 25px rgba(37,211,102,0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn-wa:hover { transform: translateY(-3px); box-shadow: 0 10px 35px rgba(37,211,102,0.55); }
-    .contact-info {
-      display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
-      border-top: 1px solid rgba(255,255,255,0.12);
-      padding-top: 2.5rem;
-    }
+    .btn-call { background: var(--sky); color: var(--white); padding: 1rem 2.2rem; border-radius: 50px; font-weight: 700; font-size: 1rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.6rem; box-shadow: 0 6px 25px rgba(30,144,255,0.4); transition: transform 0.2s; }
+    .btn-call:hover { transform: translateY(-3px); }
+    .btn-wa { background: var(--green); color: var(--white); padding: 1rem 2.2rem; border-radius: 50px; font-weight: 700; font-size: 1rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.6rem; box-shadow: 0 6px 25px rgba(37,211,102,0.4); transition: transform 0.2s; }
+    .btn-wa:hover { transform: translateY(-3px); }
+    .contact-info { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 2.5rem; }
     .info-item { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; }
-    .info-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--aqua); font-weight: 600; }
+    .info-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--aqua); font-weight: 600; }
     .info-value { font-size: 1rem; color: var(--white); font-weight: 500; }
 
-    /* ── FLOATING BUTTONS ── */
-    .floating-btns {
-      position: fixed;
-      bottom: 30px; right: 24px;
-      display: flex; flex-direction: column; gap: 12px;
-      z-index: 998;
-    }
-    .float-btn {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      text-decoration: none;
-      font-size: 1.5rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+    /* FLOATING BUTTONS */
+    .floating-btns { position: fixed; bottom: 30px; right: 22px; display: flex; flex-direction: column; gap: 12px; z-index: 998; }
+    .float-btn { width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.4rem; box-shadow: 0 4px 20px rgba(0,0,0,0.22); transition: transform 0.2s; position: relative; }
     .float-btn:hover { transform: scale(1.1); }
     .float-call { background: var(--sky); }
     .float-wa   { background: var(--green); }
-    .float-label {
-      position: absolute; right: 68px;
-      background: var(--dark);
-      color: var(--white);
-      font-size: 0.75rem; font-weight: 600;
-      padding: 0.3rem 0.7rem;
-      border-radius: 6px;
-      white-space: nowrap;
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.2s;
-    }
+    .float-label { position: absolute; right: 64px; background: var(--dark); color: var(--white); font-size: 0.72rem; font-weight: 600; padding: 0.28rem 0.65rem; border-radius: 6px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
     .float-btn:hover .float-label { opacity: 1; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--dark);
-      color: #7a9ab5;
-      text-align: center;
-      padding: 1.5rem 6vw;
-      font-size: 0.85rem;
-      border-top: 2px solid var(--blue);
-    }
+    /* FOOTER */
+    footer { background: var(--dark); color: #7a9ab5; text-align: center; padding: 1.5rem 5vw; font-size: 0.83rem; border-top: 2px solid var(--blue); }
     footer a { color: var(--aqua); text-decoration: none; }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      #about { grid-template-columns: 1fr; gap: 2.5rem; }
-      .hero-img-wrap { display: none; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .gallery-item:nth-child(1) { grid-column: span 2; }
+    /* CUSTOMER SUPPORT CHAT */
+    #chat-toggle {
+      position: fixed; bottom: 30px; left: 22px; z-index: 998;
+      width: 54px; height: 54px; border-radius: 50%;
+      background: var(--blue); color: var(--white);
+      border: none; font-size: 1.4rem; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(10,61,98,0.45);
+      transition: transform 0.2s, background 0.2s;
+      display: flex; align-items: center; justify-content: center;
     }
-    @media (max-width: 600px) {
-      .nav-links { display: none; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; }
-      .gallery-item:nth-child(1) img { height: 200px; }
-      .gallery-item img { height: 160px; }
-      #stats { grid-template-columns: repeat(2, 1fr); }
+    #chat-toggle:hover { transform: scale(1.1); background: #0d5289; }
+    .chat-pulse {
+      position: absolute; top: -2px; right: -2px;
+      width: 14px; height: 14px; background: var(--green);
+      border-radius: 50%; border: 2px solid var(--dark);
+      animation: pulse 2s infinite;
     }
+    @keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.3);opacity:0.7} }
+    #chat-box {
+      position: fixed; bottom: 100px; left: 22px; z-index: 997;
+      width: 300px; border-radius: 18px;
+      box-shadow: 0 16px 60px rgba(7,31,51,0.32);
+      overflow: hidden; display: none; flex-direction: column;
+      font-family: 'Outfit', sans-serif;
+    }
+    #chat-box.open { display: flex; animation: chatSlide 0.3s ease; }
+    @keyframes chatSlide { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+    .chat-header { background: linear-gradient(135deg, var(--blue), #0d5289); color: var(--white); padding: 1rem 1.2rem; display: flex; align-items: center; gap: 0.8rem; }
+    .chat-avatar { width: 38px; height: 38px; background: var(--aqua); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .chat-hinfo .chat-title { font-weight: 700; font-size: 0.9rem; }
+    .chat-hinfo .chat-status { font-size: 0.7rem; color: #9dc8e8; margin-top: 0.1rem; }
+    .chat-close { margin-left: auto; background: none; border: none; color: var(--white); font-size: 1.1rem; cursor: pointer; opacity: 0.7; transition: opacity 0.2s; }
+    .chat-close:hover { opacity: 1; }
+    .chat-messages { background: #f0f5f9; padding: 1rem; min-height: 150px; max-height: 230px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem; }
+    .msg { max-width: 88%; padding: 0.65rem 0.9rem; border-radius: 14px; font-size: 0.82rem; line-height: 1.5; }
+    .msg.bot { background: var(--white); color: var(--text); border-bottom-left-radius: 4px; align-self: flex-start; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .msg.user { background: var(--sky); color: var(--white); border-bottom-right-radius: 4px; align-self: flex-end; }
+    .chat-input-row { display: flex; background: var(--white); border-top: 1px solid #dde8f0; }
+    .chat-input-row input { flex: 1; border: none; padding: 0.75rem 1rem; font-size: 0.82rem; font-family: inherit; outline: none; background: transparent; }
+    .chat-send { background: var(--aqua); border: none; padding: 0 1rem; color: var(--dark); font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+    .chat-send:hover { background: #00e5e4; }
 
-    /* ── ANIMATIONS ── */
-    [data-anim] { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    /* ANIMATIONS */
+    [data-anim] { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
     [data-anim].visible { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) { #about { grid-template-columns: 1fr; gap: 2.5rem; } .hero-img-wrap { display: none; } .gallery-grid { grid-template-columns: 1fr 1fr; } .gallery-item:nth-child(1){ grid-column: span 2; } }
+    @media (max-width: 600px) { .nav-links { display: none; } #stats { grid-template-columns: 1fr 1fr; } #chat-box { width: calc(100vw - 44px); } }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Poa<span>Tank</span></div>
+  <a href="#" class="nav-logo">Poa<span>Tank</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#catalog">Catalog</a></li>
     <li><a href="#prices">Prices</a></li>
-    <li><a href="#why">Why Us</a></li>
+    <li><a href="#locations">Locations</a></li>
     <li><a href="#contact" class="nav-cta">Order Now</a></li>
   </ul>
 </nav>
@@ -447,18 +261,18 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-content" data-anim>
-    <div class="hero-badge">🇰🇪 Made for Kenya</div>
+    <div class="hero-badge">🇰🇪 Proudly Kenyan</div>
     <h1 class="hero-title">Quality<br/><span>Water</span><br/>Storage</h1>
     <p class="hero-sub">Durable, UV-resistant tanks from 100L to 24,000L. Trusted by households, farms, and businesses across Kenya.</p>
     <div class="hero-btns">
       <a href="#prices" class="btn-primary">📋 View Prices</a>
-      <a href="https://wa.me/254787030992" target="_blank" class="btn-secondary">💬 WhatsApp Us</a>
+      <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20inquire%20more%20about%20your%20tanks" target="_blank" class="btn-secondary">💬 WhatsApp Us</a>
     </div>
   </div>
   <div class="hero-img-wrap">
-    <img src="1.png" alt="Poa Tank product" onerror="this.style.background='#0a3d62';this.src=''"/>
-    <img src="2.png" alt="Poa Tank product" onerror="this.style.background='#0d5289';this.src=''"/>
-    <img src="3.png" alt="Poa Tank product" onerror="this.style.background='#0f5f9e';this.src=''"/>
+    <img src="1.png" alt="Poa Tank" onerror="this.style.background='#0a3d62';this.src=''"/>
+    <img src="2.png" alt="Poa Tank" onerror="this.style.background='#0d5289';this.src=''"/>
+    <img src="3.png" alt="Poa Tank" onerror="this.style.background='#0f5f9e';this.src=''"/>
   </div>
   <svg class="hero-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,40 C360,0 1080,60 1440,20 L1440,60 L0,60 Z" fill="#f5faff"/>
@@ -467,22 +281,10 @@
 
 <!-- STATS -->
 <div id="stats">
-  <div data-anim>
-    <div class="stat-num">17+</div>
-    <div class="stat-label">Tank Sizes</div>
-  </div>
-  <div data-anim>
-    <div class="stat-num">100L</div>
-    <div class="stat-label">Starting From</div>
-  </div>
-  <div data-anim>
-    <div class="stat-num">24K</div>
-    <div class="stat-label">Max Litres</div>
-  </div>
-  <div data-anim>
-    <div class="stat-num">✔</div>
-    <div class="stat-label">Delivery Available</div>
-  </div>
+  <div data-anim><div class="stat-num">17+</div><div class="stat-label">Tank Sizes</div></div>
+  <div data-anim><div class="stat-num">100L</div><div class="stat-label">Starting From</div></div>
+  <div data-anim><div class="stat-num">24K</div><div class="stat-label">Max Litres</div></div>
+  <div data-anim><div class="stat-num">3</div><div class="stat-label">Branches Nationwide</div></div>
 </div>
 
 <!-- ABOUT -->
@@ -496,18 +298,173 @@
     <p class="section-sub">Poa Tank supplies high-quality polyethylene water storage tanks designed to withstand Kenya's climate. Whether you need water for your home, farm, school, or commercial project — we have the right size at the right price.</p>
     <ul class="about-list">
       <li>Food-grade, UV-stabilised polyethylene</li>
-      <li>Rust-proof & leak-proof construction</li>
+      <li>Rust-proof &amp; leak-proof construction</li>
       <li>Wide size range: 100L to 24,000L</li>
       <li>Fast delivery across Kenya</li>
-      <li>Competitive wholesale & retail pricing</li>
-      <li>After-sales support & installation advice</li>
+      <li>Competitive wholesale &amp; retail pricing</li>
+      <li>After-sales support &amp; installation advice</li>
     </ul>
   </div>
 </section>
 
-<!-- GALLERY -->
+<!-- CATALOG — now before gallery -->
+<section id="catalog">
+  <div data-anim>
+    <p class="section-tag">🔥 Special Offers</p>
+    <h2 class="section-title">Featured Tank Catalog</h2>
+  </div>
+  <div class="catalog-grid">
+
+    <!-- Card 1 -->
+    <div class="catalog-card" data-anim>
+      <div class="catalog-badge">ON SALE</div>
+      <img src="8.png" class="catalog-img" alt="Poa Tank Standard" onerror="this.style.background='#0a3d62';this.style.minHeight='215px';this.src=''"/>
+      <div class="catalog-body">
+        <div class="catalog-name">Poa Tank — Standard Series</div>
+        <div class="catalog-desc">Durable UV-stabilised polyethylene.</div>
+        <div class="catalog-pricing">
+          <span class="price-was">Was KSh 6,500.00</span>
+          <span class="price-now">KSh 4,500.00</span>
+          <span class="price-save">Save 20%</span>
+        </div>
+        <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20inquire%20more%20about%20your%20tanks" target="_blank" class="btn-order">💬 Order Now</a>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="catalog-card" data-anim>
+      <div class="catalog-badge">ON SALE</div>
+      <img src="9.png" class="catalog-img" alt="Poa Tank Mobile Toilet" onerror="this.style.background='#0d5289';this.style.minHeight='215px';this.src=''"/>
+      <div class="catalog-body">
+        <div class="catalog-name">Poa Tank — Mobile Toilet</div>
+        <div class="catalog-desc">Perfect for outdoor events and weddings.</div>
+        <div class="catalog-pricing">
+          <span class="price-was">Was KSh 132,000.00</span>
+          <span class="price-now">KSh 120,000.00</span>
+          <span class="price-save">Save 9%</span>
+        </div>
+        <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20inquire%20more%20about%20your%20tanks" target="_blank" class="btn-order">💬 Order Now</a>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="catalog-card" data-anim>
+      <div class="catalog-badge">ON SALE</div>
+      <img src="10.png" class="catalog-img" alt="Plastic Storage Tank with Tap" onerror="this.style.background='#0f5f9e';this.style.minHeight='215px';this.src=''"/>
+      <div class="catalog-body">
+        <div class="catalog-name">Poa Tank — Plastic Storage Tank with Tap</div>
+        <div class="catalog-desc">From 20–100 litres. Handwashing stations at events.</div>
+        <div class="catalog-pricing">
+          <span class="price-was">Was KSh 4,200.00</span>
+          <span class="price-now">KSh 4,000.00</span>
+          <span class="price-save">Save 5%</span>
+        </div>
+        <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20inquire%20more%20about%20your%20tanks" target="_blank" class="btn-order">💬 Order Now</a>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="catalog-card" data-anim>
+      <div class="catalog-badge">ON SALE</div>
+      <img src="11.png" class="catalog-img" alt="Poa Tank 11" onerror="this.style.background='#0f5f9e';this.style.minHeight='215px';this.src=''"/>
+      <div class="catalog-body">
+        <div class="catalog-name">Poa Tank — Sewer line</div>
+        <div class="catalog-desc">Sewer line for efficient waste water management.</div>
+        <div class="catalog-pricing">
+          <span class="price-was">Was KSh 4,200.00</span>
+          <span class="price-now">KSh 2,500.00</span>
+          <span class="price-save">Save 41%</span>
+        </div>
+        <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20inquire%20more%20about%20your%20tanks" target="_blank" class="btn-order">💬 Order Now</a>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="catalog-card" data-anim>
+      <div class="catalog-badge">ON SALE</div>
+      <img src="12.png" class="catalog-img" alt="Poa Tank 12" onerror="this.style.background='#0d5289';this.style.minHeight='215px';this.src=''"/>
+      <div class="catalog-body">
+        <div class="catalog-name">Poa Tank — Poa bin</div>
+        <div class="catalog-desc">Waste storage bin for household use.</div>
+        <div class="catalog-pricing">
+          <span class="price-was">Was KSh 700.00</span> <br>
+          <span class="price-now">KSh 630.00</span><br>
+          <span class="price-save">Save 10%</span>
+        </div>
+        <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20inquire%20more%20about%20your%20tanks" target="_blank" class="btn-order">💬 Order Now</a>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="catalog-card" data-anim>
+      <div class="catalog-badge">ON SALE</div>
+      <img src="13.png" class="catalog-img" alt="Poa Tank 13" onerror="this.style.background='#0d5289';this.style.minHeight='215px';this.src=''"/>
+      <div class="catalog-body">
+        <div class="catalog-name">Poa Tank — Buckets and Pots</div>
+        <div class="catalog-desc">Water storage buckets for household use.</div>
+        <div class="catalog-pricing">
+          <span class="price-was">Was KSh 500.00</span><br>
+          <span class="price-now">KSh 300.00</span><br>
+          <span class="price-save">Save 40%</span>
+        </div>
+        <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20inquire%20more%20about%20your%20tanks" target="_blank" class="btn-order">💬 Order Now</a>
+      </div>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="catalog-card" data-anim>
+      <div class="catalog-badge">ON SALE</div>
+      <img src="14.png" class="catalog-img" alt="Poa Tank 14" onerror="this.style.background='#0d5289';this.style.minHeight='215px';this.src=''"/>
+      <div class="catalog-body">
+        <div class="catalog-name">Poa Tank — Double layer</div>
+        <div class="catalog-desc">Household water storage tank .</div>
+        <div class="catalog-pricing">
+          <span class="price-was">Was KSh 5,000.00</span><br>
+          <span class="price-now">KSh 4,000.00</span><br>
+          <span class="price-save">Save 20%</span>
+        </div>
+        <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20inquire%20more%20about%20your%20tanks" target="_blank" class="btn-order">💬 Order Now</a>
+      </div>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="catalog-card" data-anim>
+      <div class="catalog-badge">ON SALE</div>
+      <img src="15.png" class="catalog-img" alt="Poa Tank 15" onerror="this.style.background='#0d5289';this.style.minHeight='215px';this.src=''"/>
+      <div class="catalog-body">
+        <div class="catalog-name">Poa Tank — Bin</div>
+        <div class="catalog-desc">Waste storage bin for household use.</div>
+        <div class="catalog-pricing">
+          <span class="price-was">Was KSh 780.00</span><br>
+          <span class="price-now">KSh 499.00</span><br>
+          <span class="price-save">Save 36%</span>
+        </div>
+        <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20inquire%20more%20about%20your%20tanks" target="_blank" class="btn-order">💬 Order Now</a>
+      </div>
+    </div>
+
+    <!-- Card 9 -->
+    <div class="catalog-card" data-anim>
+      <div class="catalog-badge">ON SALE</div>
+      <img src="16.png" class="catalog-img" alt="Poa Tank 16" onerror="this.style.background='#0d5289';this.style.minHeight='215px';this.src=''"/>
+      <div class="catalog-body">
+        <div class="catalog-name">Poa Tank — Dustbin</div>
+        <div class="catalog-desc">Outdoor waste disposal solution residential use.</div>
+        <div class="catalog-pricing">
+          <span class="price-was">Was KSh 5,000.00</span><br>
+          <span class="price-now">KSh 4,500.00</span><br>
+          <span class="price-save">Save 10%</span>
+        </div>
+        <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20inquire%20more%20about%20your%20tanks" target="_blank" class="btn-order">💬 Order Now</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALLERY — now after catalog -->
 <section id="gallery">
-  <div class="gallery-header" data-anim>
+  <div data-anim>
     <p class="section-tag">Our Products</p>
     <h2 class="section-title">Tank Gallery</h2>
   </div>
@@ -524,19 +481,14 @@
 
 <!-- PRICES -->
 <section id="prices">
-  <div class="price-intro" data-anim>
+  <div data-anim>
     <p class="section-tag">Transparent Pricing</p>
-    <h2 class="section-title">Retail Price List</h2>
-    <p class="section-sub">All prices are in Kenyan Shillings (KSh). Contact us for bulk/wholesale pricing or delivery quotes.</p>
+    <h2 class="section-title">Full Retail Price List</h2>
+    <p class="section-sub">All prices in Kenyan Shillings (KSh). Contact us for bulk/wholesale pricing or delivery quotes.</p>
   </div>
   <div class="price-table-wrap" data-anim>
     <table>
-      <thead>
-        <tr>
-          <th>Capacity (Litres)</th>
-          <th>Retail Price (KSh)</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Capacity (Litres)</th><th>Retail Price (KSh)</th></tr></thead>
       <tbody>
         <tr><td>100 L</td><td>KSh 1,100</td></tr>
         <tr><td>250 L</td><td>KSh 1,800</td></tr>
@@ -568,36 +520,48 @@
     <h2 class="section-title">The Poa Difference</h2>
   </div>
   <div class="cards-grid">
-    <div class="card" data-anim>
-      <div class="card-icon">🏗️</div>
-      <h3>Built to Last</h3>
-      <p>Thick-walled, UV-stabilised polyethylene tanks that resist cracking, algae, and harsh African sunlight for years.</p>
+    <div class="card" data-anim><div class="card-icon">🏗️</div><h3>Built to Last</h3><p>Thick-walled, UV-stabilised polyethylene that resists cracking, algae, and harsh African sunlight.</p></div>
+    <div class="card" data-anim><div class="card-icon">💧</div><h3>Clean Water</h3><p>Food-grade materials keep your stored water clean, safe, and free from contamination at all times.</p></div>
+    <div class="card" data-anim><div class="card-icon">📦</div><h3>All Sizes</h3><p>From a 100L household tank to a 24,000L commercial reservoir — we have every size you need.</p></div>
+    <div class="card" data-anim><div class="card-icon">🚚</div><h3>Nationwide Delivery</h3><p>We deliver to your doorstep. Call or WhatsApp us for a delivery quote to your location.</p></div>
+    <div class="card" data-anim><div class="card-icon">💰</div><h3>Best Prices</h3><p>Competitive retail and wholesale pricing. Bulk discounts available for contractors and resellers.</p></div>
+    <div class="card" data-anim><div class="card-icon">📍</div><h3>3 Branches</h3><p>Pick up from Nairobi Athi River, Ahero Kisumu, or Mombasa Changamwe — wherever is nearest to you.</p></div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section id="locations">
+  <div data-anim>
+    <p class="section-tag">Find Us</p>
+    <h2 class="section-title">Our Branch Locations</h2>
+    <p class="section-sub">Visit any of our three branches across Kenya for stock viewing, pick-up, or expert advice.</p>
+  </div>
+  <div class="location-cards">
+
+    <div class="loc-card" data-anim>
+      <div class="loc-city">📍 Nairobi — Branch 1</div>
+      <div class="loc-name">Scarlet Business Park (2nd Gate), Athi River</div>
+      <div class="loc-addr">BSI-Scarlett Business Park, Mombasa Road, Athi River, Nairobi</div>
     </div>
-    <div class="card" data-anim>
-      <div class="card-icon">💧</div>
-      <h3>Clean Water</h3>
-      <p>Food-grade materials ensure your stored water stays clean, safe, and free from contamination.</p>
+
+    <div class="loc-card" data-anim>
+      <div class="loc-city">📍 Nairobi — Branch 2</div>
+      <div class="loc-name">Red Gate, Athi River</div>
+      <div class="loc-addr">Red Gate Area, Athi River, Nairobi County</div>
     </div>
-    <div class="card" data-anim>
-      <div class="card-icon">📦</div>
-      <h3>All Sizes Available</h3>
-      <p>From a 100L household tank to a 24,000L commercial reservoir — we have the right tank for your needs.</p>
+
+    <div class="loc-card kisumu" data-anim>
+      <div class="loc-city">📍 Kisumu — Ahero</div>
+      <div class="loc-name">Ahero, Kisumu</div>
+      <div class="loc-addr">Ahero Town, along the Kisumu–Nairobi Highway, Kisumu County</div>
     </div>
-    <div class="card" data-anim>
-      <div class="card-icon">🚚</div>
-      <h3>Delivery Across Kenya</h3>
-      <p>We deliver to your doorstep. Contact us for a delivery quote to your county or town.</p>
+
+    <div class="loc-card mombasa" data-anim>
+      <div class="loc-city">📍 Mombasa — Changamwe</div>
+      <div class="loc-name">Pamba Road, off Refinery Road</div>
+      <div class="loc-addr">Changamwe, Pamba Road off Refinery Road, Mombasa</div>
     </div>
-    <div class="card" data-anim>
-      <div class="card-icon">💰</div>
-      <h3>Best Market Prices</h3>
-      <p>Competitive retail and wholesale pricing. Bulk discounts available for contractors and resellers.</p>
-    </div>
-    <div class="card" data-anim>
-      <div class="card-icon">📞</div>
-      <h3>Fast Response</h3>
-      <p>Call or WhatsApp us anytime. Our team responds quickly to help you choose and order the right tank.</p>
-    </div>
+
   </div>
 </section>
 
@@ -605,66 +569,127 @@
 <section id="contact">
   <p class="section-tag" data-anim>Get In Touch</p>
   <h2 class="section-title" data-anim>Order Your Tank Today</h2>
-  <p class="section-sub" data-anim>Ready to order or need a quote? Reach us directly — we're just a call or message away.</p>
+  <p class="section-sub" data-anim>Ready to order or need a quote? Reach us directly — we're just a call or WhatsApp away.</p>
   <div class="contact-btns" data-anim>
-    <a href="tel:+254787030992" class="btn-call">
-      📞 Call Us — 0787 030 992
-    </a>
-    <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20enquire%20about%20a%20tank." target="_blank" class="btn-wa">
-      💬 WhatsApp Us
-    </a>
+    <a href="tel:+254787030992" class="btn-call">📞 Call Us — 0787 030 992</a>
+    <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20inquire%20more%20about%20your%20tanks" target="_blank" class="btn-wa">💬 WhatsApp Us</a>
   </div>
   <div class="contact-info" data-anim>
-    <div class="info-item">
-      <span class="info-label">Phone</span>
-      <span class="info-value">0787 030 992</span>
-    </div>
-    <div class="info-item">
-      <span class="info-label">WhatsApp</span>
-      <span class="info-value">0787 030 992</span>
-    </div>
-    <div class="info-item">
-      <span class="info-label">Delivery</span>
-      <span class="info-value">Nationwide, Kenya</span>
-    </div>
-    <div class="info-item">
-      <span class="info-label">Hours</span>
-      <span class="info-value">Mon–Sat: 8am – 6pm</span>
-    </div>
+    <div class="info-item"><span class="info-label">Phone</span><span class="info-value">0787 030 992</span></div>
+    <div class="info-item"><span class="info-label">WhatsApp</span><span class="info-value">0787 030 992</span></div>
+    <div class="info-item"><span class="info-label">Branches</span><span class="info-value">Nairobi · Kisumu · Mombasa</span></div>
+    <div class="info-item"><span class="info-label">Hours</span><span class="info-value">Mon–Sat: 8am – 6pm</span></div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <p>© 2025 <strong style="color:var(--aqua)">Poa Tank</strong> — Quality Water Storage Solutions · Kenya &nbsp;|&nbsp;
-  <a href="tel:+254787030992">0787 030 992</a>
+  <a href="tel:+254787030992">0787 030 992</a> &nbsp;|&nbsp;
+  Nairobi · Ahero Kisumu · Mombasa Changamwe
   </p>
 </footer>
 
-<!-- FLOATING ACTION BUTTONS -->
+<!-- FLOATING BUTTONS -->
 <div class="floating-btns">
-  <a href="tel:+254787030992" class="float-btn float-call" title="Call Us" style="position:relative;">
-    <span class="float-label">Call Us</span>
-    📞
+  <a href="tel:+254787030992" class="float-btn float-call">
+    <span class="float-label">Call Us</span>📞
   </a>
-  <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20enquire%20about%20a%20tank." target="_blank" class="float-btn float-wa" title="WhatsApp" style="position:relative;">
-    <span class="float-label">WhatsApp</span>
-    💬
+  <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20inquire%20more%20about%20your%20tanks" target="_blank" class="float-btn float-wa">
+    <span class="float-label">WhatsApp</span>💬
   </a>
 </div>
 
-<!-- SCROLL ANIMATION -->
+<!-- CUSTOMER SUPPORT CHAT -->
+<button id="chat-toggle" style="position:relative;">
+  🎧
+  <span class="chat-pulse"></span>
+</button>
+
+<div id="chat-box">
+  <div class="chat-header">
+    <div class="chat-avatar">💧</div>
+    <div class="chat-hinfo">
+      <div class="chat-title">Poa Tank Support</div>
+      <div class="chat-status">🟢 Online — replies instantly</div>
+    </div>
+    <button class="chat-close" id="chat-close">✕</button>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <div class="msg bot">👋 <strong>Welcome to Poa Tanks!</strong><br/>For a quicker response, please WhatsApp us. How can we help you today?</div>
+  </div>
+  <div class="chat-input-row">
+    <input type="text" id="chat-input" placeholder="Type your question…" autocomplete="off"/>
+    <button class="chat-send" id="chat-send" title="Send">➤</button>
+  </div>
+</div>
+
 <script>
-  const els = document.querySelectorAll('[data-anim]');
-  const obs = new IntersectionObserver((entries) => {
+  /* Scroll animations */
+  const animEls = document.querySelectorAll('[data-anim]');
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-        obs.unobserve(e.target);
+        setTimeout(() => e.target.classList.add('visible'), i * 75);
+        observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.12 });
-  els.forEach(el => obs.observe(el));
+  }, { threshold: 0.1 });
+  animEls.forEach(el => observer.observe(el));
+
+  /* Customer Support Chat */
+  const WA = "https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20inquire%20more%20about%20your%20tanks";
+  const toggle   = document.getElementById('chat-toggle');
+  const box      = document.getElementById('chat-box');
+  const closeBtn = document.getElementById('chat-close');
+  const input    = document.getElementById('chat-input');
+  const sendBtn  = document.getElementById('chat-send');
+  const msgs     = document.getElementById('chat-messages');
+
+  toggle.addEventListener('click', () => box.classList.toggle('open'));
+  closeBtn.addEventListener('click', () => box.classList.remove('open'));
+
+  function addMsg(html, type) {
+    const d = document.createElement('div');
+    d.className = 'msg ' + type;
+    d.innerHTML = html;
+    msgs.appendChild(d);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function botReply(text) {
+    const t = text.toLowerCase();
+    let r = '';
+    if (t.match(/price|cost|bei|how much|ksh|cheap/)) {
+      r = `💰 Check our full <a href="#prices">Price List</a> — tanks from KSh 1,100 (100L) to KSh 120,000 (24,000L).<br/>Or <a href="${WA}" target="_blank"><strong>WhatsApp us</strong></a> for a custom quote!`;
+    } else if (t.match(/location|branch|where|address|nairobi|kisumu|mombasa|ahero|athi|changamwe/)) {
+      r = `📍 Our branches:<br/>• <b>Nairobi</b> — Scarlet Business Park & Red Gate, Athi River<br/>• <b>Kisumu</b> — Ahero<br/>• <b>Mombasa</b> — Changamwe, Pamba Road<br/><a href="#locations">See locations →</a>`;
+    } else if (t.match(/deliver|shipping|transport|send/)) {
+      r = `🚚 Yes! We deliver nationwide across Kenya.<br/><a href="${WA}" target="_blank"><strong>WhatsApp 0787 030 992</strong></a> for a delivery quote to your location.`;
+    } else if (t.match(/size|litre|liter|capacity|large|small|big/)) {
+      r = `📦 We stock tanks from <b>100L up to 24,000L</b>.<br/>See the <a href="#prices">full price list</a> for all sizes &amp; prices.`;
+    } else if (t.match(/order|buy|purchase|want|need|get/)) {
+      r = `🛒 The quickest way to order is via WhatsApp!<br/><a href="${WA}" target="_blank"><strong>Tap here to message us →</strong></a>`;
+    } else if (t.match(/catalog|offer|sale|discount|promo/)) {
+      r = `🔥 Check our <a href="#catalog">Featured Catalog</a> for special sale prices on our most popular tanks!`;
+    } else if (t.match(/hello|hi|hey|hujambo|habari|sema|good/)) {
+      r = `👋 Hello! Welcome to <strong>Poa Tanks</strong>. For a quicker response, please <a href="${WA}" target="_blank"><strong>WhatsApp us</strong></a>. How can we assist you?`;
+    } else {
+      r = `😊 Thanks for reaching out!<br/><b>Welcome to Poa Tanks</b> — for a quicker response, please <a href="${WA}" target="_blank"><strong>WhatsApp us here</strong></a> and our team will assist you immediately.`;
+    }
+    setTimeout(() => addMsg(r, 'bot'), 650);
+  }
+
+  function send() {
+    const v = input.value.trim();
+    if (!v) return;
+    addMsg(v, 'user');
+    input.value = '';
+    botReply(v);
+  }
+
+  sendBtn.addEventListener('click', send);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') send(); });
 </script>
 
 </body>
