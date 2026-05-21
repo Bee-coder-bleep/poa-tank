@@ -7,7 +7,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'AW-18168828331');
 </script>
   <meta charset="UTF-8" />
@@ -97,6 +96,106 @@
     .about-list li { display: flex; align-items: center; gap: 0.7rem; font-size: 0.95rem; }
     .about-list li::before { content: '✓'; background: var(--aqua); color: var(--dark); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; }
 
+    /* ── NEW ARRIVALS ── */
+    #new-arrivals {
+      background: linear-gradient(160deg, var(--dark) 0%, #0a3d62 100%);
+      position: relative; overflow: hidden;
+    }
+    #new-arrivals::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2300c9c8' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    #new-arrivals .section-tag { color: var(--accent); }
+    #new-arrivals .section-title { color: var(--white); }
+    #new-arrivals .section-sub { color: #9dc8e8; }
+    .new-arrivals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem; margin-top: 2.5rem;
+    }
+    .arrival-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(0,201,200,0.25);
+      border-radius: 20px; overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      position: relative;
+    }
+    .arrival-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 55px rgba(0,201,200,0.18);
+      border-color: rgba(0,201,200,0.6);
+    }
+    .arrival-badge-wrap {
+      position: absolute; top: 14px; left: 14px; display: flex; gap: 6px; z-index: 2;
+    }
+    .badge-new {
+      background: var(--accent); color: var(--dark);
+      font-size: 0.67rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 1.5px; padding: 0.25rem 0.8rem; border-radius: 20px;
+    }
+    .badge-transparent {
+      background: rgba(0,201,200,0.2); color: var(--aqua);
+      border: 1px solid var(--aqua);
+      font-size: 0.67rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; padding: 0.25rem 0.8rem; border-radius: 20px;
+    }
+    .arrival-img-wrap {
+      width: 100%; height: 230px; overflow: hidden; position: relative;
+      background: rgba(10,61,98,0.5);
+    }
+    .arrival-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .arrival-card:hover .arrival-img-wrap img { transform: scale(1.06); }
+    .arrival-img-wrap::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(7,31,51,0.55) 0%, transparent 50%);
+    }
+    .arrival-body { padding: 1.4rem 1.5rem 1.6rem; }
+    .arrival-name {
+      font-weight: 700; font-size: 1.05rem; color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .arrival-desc {
+      font-size: 0.83rem; color: #9dc8e8; line-height: 1.6; margin-bottom: 1rem;
+    }
+    .arrival-features {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem;
+    }
+    .arrival-feat {
+      background: rgba(0,201,200,0.12); color: var(--aqua);
+      border: 1px solid rgba(0,201,200,0.3);
+      font-size: 0.72rem; font-weight: 600; padding: 0.22rem 0.7rem;
+      border-radius: 20px; letter-spacing: 0.5px;
+    }
+    .arrival-pricing {
+      display: flex; align-items: baseline; gap: 0.75rem;
+      margin-bottom: 1.2rem; flex-wrap: wrap;
+    }
+    .arrival-price-was { font-size: 0.88rem; color: #7a9ab5; text-decoration: line-through; }
+    .arrival-price-now {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.9rem;
+      color: var(--aqua); letter-spacing: 0.5px;
+    }
+    .arrival-price-save {
+      font-size: 0.7rem; font-weight: 700;
+      background: rgba(240,165,0,0.15); color: var(--accent);
+      border: 1px solid rgba(240,165,0,0.4);
+      padding: 0.2rem 0.6rem; border-radius: 10px;
+    }
+    .btn-order-arrival {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      width: 100%;
+      background: linear-gradient(135deg, var(--aqua), var(--sky));
+      color: var(--dark); font-weight: 700; font-size: 0.9rem;
+      padding: 0.82rem 1rem; border-radius: 50px; text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 18px rgba(0,201,200,0.35);
+    }
+    .btn-order-arrival:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,201,200,0.5); }
+
     /* CATALOG */
     #catalog { background: var(--off); }
     .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 2rem; margin-top: 2.5rem; }
@@ -107,6 +206,7 @@
     }
     .catalog-card:hover { transform: translateY(-6px); box-shadow: 0 18px 50px rgba(10,61,98,0.18); }
     .catalog-badge { position: absolute; top: 12px; left: 12px; background: var(--red); color: #fff; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.75rem; border-radius: 20px; z-index: 2; }
+    .catalog-badge-new { position: absolute; top: 12px; right: 12px; background: var(--accent); color: var(--dark); font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.75rem; border-radius: 20px; z-index: 2; }
     .catalog-img { width: 100%; height: 215px; object-fit: cover; display: block; }
     .catalog-body { padding: 1.3rem 1.4rem 1.6rem; }
     .catalog-name { font-weight: 700; font-size: 1rem; color: var(--blue); margin-bottom: 0.45rem; }
@@ -249,7 +349,7 @@
     [data-anim].visible { opacity: 1; transform: none; }
 
     /* RESPONSIVE */
-    @media (max-width: 900px) { #about { grid-template-columns: 1fr; gap: 2.5rem; } .hero-img-wrap { display: none; } .gallery-grid { grid-template-columns: 1fr 1fr; } .gallery-item:nth-child(1){ grid-column: span 2; } }
+    @media (max-width: 900px) { #about { grid-template-columns: 1fr; gap: 2.5rem; } .hero-img-wrap { display: none; } .gallery-grid { grid-template-columns: 1fr 1fr; } .gallery-item:nth-child(1){ grid-column: span 2; } .new-arrivals-grid { grid-template-columns: 1fr; } }
     @media (max-width: 600px) { .nav-links { display: none; } #stats { grid-template-columns: 1fr 1fr; } #chat-box { width: calc(100vw - 44px); } }
   </style>
 </head>
@@ -260,6 +360,7 @@
   <a href="#" class="nav-logo">Poa<span>Tank</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#new-arrivals">New Arrivals</a></li>
     <li><a href="#catalog">Catalog</a></li>
     <li><a href="#prices">Prices</a></li>
     <li><a href="#locations">Locations</a></li>
@@ -316,7 +417,103 @@
   </div>
 </section>
 
-<!-- CATALOG — now before gallery -->
+<!-- ══════════════════════════════════════════
+     NEW ARRIVALS — Transparent Water Tanks
+     ══════════════════════════════════════════ -->
+<section id="new-arrivals">
+  <div data-anim>
+    <p class="section-tag">✨ Just Landed</p>
+    <h2 class="section-title" style="color:var(--white);">New Arrivals</h2>
+    <p class="section-sub" style="color:#9dc8e8;">Introducing our brand-new Transparent Water Tank series — monitor your water level at a glance. Crystal-clear, food-grade polyethylene built for indoor storage, labs, commercial kitchens, and everyday household use.</p>
+  </div>
+
+  <div class="new-arrivals-grid">
+
+    <!-- Arrival 1 -->
+    <div class="arrival-card" data-anim>
+      <div class="arrival-badge-wrap">
+        <span class="badge-new">NEW</span>
+        <span class="badge-transparent">Transparent</span>
+      </div>
+      <div class="arrival-img-wrap">
+        <img src="17.png" alt="Poa Tank Transparent — Small" onerror="this.style.background='#0a3d62';this.src=''"/>
+      </div>
+      <div class="arrival-body">
+        <div class="arrival-name">Transparent Tank — Compact Series</div>
+        <div class="arrival-desc">Crystal-clear food-grade polyethylene tank. Perfect for indoor use, home kitchens, offices, and small water points where you want instant visual level checks.</div>
+        <div class="arrival-features">
+          <span class="arrival-feat">10,000L</span>
+          <span class="arrival-feat">Food-Grade</span>
+          <span class="arrival-feat">BPA-Free</span>
+          <span class="arrival-feat">Indoor Use</span>
+        </div>
+        <div class="arrival-pricing">
+          <span class="arrival-price-was">Was KSh 14,000</span>
+          <span class="arrival-price-now">KSh 11,500</span>
+          <span class="arrival-price-save">Save 18%</span>
+        </div>
+        <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20inquire%20about%20the%20NEW%20Transparent%20Compact%20Tank" target="_blank" class="btn-order-arrival">💬 Order Now</a>
+      </div>
+    </div>
+
+    <!-- Arrival 2 -->
+    <div class="arrival-card" data-anim>
+      <div class="arrival-badge-wrap">
+        <span class="badge-new">NEW</span>
+        <span class="badge-transparent">Transparent</span>
+      </div>
+      <div class="arrival-img-wrap">
+        <img src="18.png" alt="Poa Tank Transparent — Mid" onerror="this.style.background='#0d5289';this.src=''"/>
+      </div>
+      <div class="arrival-body">
+        <div class="arrival-name">Transparent Tank — Mid-Range Series</div>
+        <div class="arrival-desc">High-clarity polyethylene with graduated volume markings. Ideal for schools, clinics, small businesses, and light commercial applications needing reliable water storage.</div>
+        <div class="arrival-features">
+          <span class="arrival-feat">10,000L</span>
+          <span class="arrival-feat">Volume Markings</span>
+          <span class="arrival-feat">Leak-Proof</span>
+          <span class="arrival-feat">Easy Clean</span>
+        </div>
+        <div class="arrival-pricing">
+          <span class="arrival-price-was">Was KSh 14,000</span>
+          <span class="arrival-price-now">KSh 11,500</span>
+          <span class="arrival-price-save">Save 18%</span>
+        </div>
+        <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20inquire%20about%20the%20NEW%20Transparent%20Mid-Range%20Tank" target="_blank" class="btn-order-arrival">💬 Order Now</a>
+      </div>
+    </div>
+
+    <!-- Arrival 3 -->
+    <div class="arrival-card" data-anim>
+      <div class="arrival-badge-wrap">
+        <span class="badge-new">NEW</span>
+        <span class="badge-transparent">Transparent</span>
+      </div>
+      <div class="arrival-img-wrap">
+        <img src="19.png" alt="Poa Tank Transparent — Large" onerror="this.style.background='#0f5f9e';this.src=''"/>
+      </div>
+      <div class="arrival-body">
+        <div class="arrival-name">Transparent Tank — Heavy-Duty Series</div>
+        <div class="arrival-desc">Thick-walled crystal-clear tank engineered for demanding use. Farms, workshops, construction sites, and large households benefit from its generous capacity and at-a-glance level monitoring.</div>
+        <div class="arrival-features">
+          <span class="arrival-feat">1,000L – 2,000L</span>
+          <span class="arrival-feat">Thick-Walled</span>
+          <span class="arrival-feat">UV-Stable</span>
+          <span class="arrival-feat">Industrial Grade</span>
+        </div>
+        <div class="arrival-pricing">
+          <span class="arrival-price-was">Was KSh 4,500</span>
+          <span class="arrival-price-now">KSh 3,800</span>
+          <span class="arrival-price-save">Save 16%</span>
+        </div>
+        <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20inquire%20about%20the%20NEW%20Transparent%20Heavy-Duty%20Tank" target="_blank" class="btn-order-arrival">💬 Order Now</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CATALOG — existing products + 3 transparent tanks added -->
 <section id="catalog">
   <div data-anim>
     <p class="section-tag">🔥 Special Offers</p>
@@ -375,7 +572,7 @@
     <!-- Card 4 -->
     <div class="catalog-card" data-anim>
       <div class="catalog-badge">ON SALE</div>
-      <img src="11.png" class="catalog-img" alt="Poa Tank 11" onerror="this.style.background='#0f5f9e';this.style.minHeight='215px';this.src=''"/>
+      <img src="11.png" class="catalog-img" alt="Poa Tank Sewer line" onerror="this.style.background='#0f5f9e';this.style.minHeight='215px';this.src=''"/>
       <div class="catalog-body">
         <div class="catalog-name">Poa Tank — Sewer line</div>
         <div class="catalog-desc">Sewer line for efficient waste water management.</div>
@@ -391,12 +588,12 @@
     <!-- Card 5 -->
     <div class="catalog-card" data-anim>
       <div class="catalog-badge">ON SALE</div>
-      <img src="12.png" class="catalog-img" alt="Poa Tank 12" onerror="this.style.background='#0d5289';this.style.minHeight='215px';this.src=''"/>
+      <img src="12.png" class="catalog-img" alt="Poa Tank Poa bin" onerror="this.style.background='#0d5289';this.style.minHeight='215px';this.src=''"/>
       <div class="catalog-body">
         <div class="catalog-name">Poa Tank — Poa bin</div>
         <div class="catalog-desc">Waste storage bin for household use.</div>
         <div class="catalog-pricing">
-          <span class="price-was">Was KSh 700.00</span> <br>
+          <span class="price-was">Was KSh 700.00</span><br>
           <span class="price-now">KSh 630.00</span><br>
           <span class="price-save">Save 10%</span>
         </div>
@@ -407,7 +604,7 @@
     <!-- Card 6 -->
     <div class="catalog-card" data-anim>
       <div class="catalog-badge">ON SALE</div>
-      <img src="13.png" class="catalog-img" alt="Poa Tank 13" onerror="this.style.background='#0d5289';this.style.minHeight='215px';this.src=''"/>
+      <img src="13.png" class="catalog-img" alt="Poa Tank Buckets and Pots" onerror="this.style.background='#0d5289';this.style.minHeight='215px';this.src=''"/>
       <div class="catalog-body">
         <div class="catalog-name">Poa Tank — Buckets and Pots</div>
         <div class="catalog-desc">Water storage buckets for household use.</div>
@@ -423,10 +620,10 @@
     <!-- Card 7 -->
     <div class="catalog-card" data-anim>
       <div class="catalog-badge">ON SALE</div>
-      <img src="14.png" class="catalog-img" alt="Poa Tank 14" onerror="this.style.background='#0d5289';this.style.minHeight='215px';this.src=''"/>
+      <img src="14.png" class="catalog-img" alt="Poa Tank Double layer" onerror="this.style.background='#0d5289';this.style.minHeight='215px';this.src=''"/>
       <div class="catalog-body">
         <div class="catalog-name">Poa Tank — Double layer</div>
-        <div class="catalog-desc">Household water storage tank .</div>
+        <div class="catalog-desc">Household water storage tank.</div>
         <div class="catalog-pricing">
           <span class="price-was">Was KSh 5,000.00</span><br>
           <span class="price-now">KSh 4,000.00</span><br>
@@ -439,7 +636,7 @@
     <!-- Card 8 -->
     <div class="catalog-card" data-anim>
       <div class="catalog-badge">ON SALE</div>
-      <img src="15.png" class="catalog-img" alt="Poa Tank 15" onerror="this.style.background='#0d5289';this.style.minHeight='215px';this.src=''"/>
+      <img src="15.png" class="catalog-img" alt="Poa Tank Bin" onerror="this.style.background='#0d5289';this.style.minHeight='215px';this.src=''"/>
       <div class="catalog-body">
         <div class="catalog-name">Poa Tank — Bin</div>
         <div class="catalog-desc">Waste storage bin for household use.</div>
@@ -455,10 +652,10 @@
     <!-- Card 9 -->
     <div class="catalog-card" data-anim>
       <div class="catalog-badge">ON SALE</div>
-      <img src="16.png" class="catalog-img" alt="Poa Tank 16" onerror="this.style.background='#0d5289';this.style.minHeight='215px';this.src=''"/>
+      <img src="16.png" class="catalog-img" alt="Poa Tank Dustbin" onerror="this.style.background='#0d5289';this.style.minHeight='215px';this.src=''"/>
       <div class="catalog-body">
         <div class="catalog-name">Poa Tank — Dustbin</div>
-        <div class="catalog-desc">Outdoor waste disposal solution residential use.</div>
+        <div class="catalog-desc">Outdoor waste disposal solution for residential use.</div>
         <div class="catalog-pricing">
           <span class="price-was">Was KSh 5,000.00</span><br>
           <span class="price-now">KSh 4,500.00</span><br>
@@ -468,10 +665,60 @@
       </div>
     </div>
 
+    <!-- ── NEW: Transparent Tank Compact (catalog card) ── -->
+    <div class="catalog-card" data-anim>
+      <div class="catalog-badge" style="background:var(--accent);color:var(--dark);">NEW</div>
+      <div class="catalog-badge-new" style="position:absolute;top:12px;right:12px;background:rgba(0,201,200,0.15);color:var(--aqua);border:1px solid var(--aqua);font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:0.22rem 0.65rem;border-radius:20px;z-index:2;">Transparent</div>
+      <img src="17.png" class="catalog-img" alt="Transparent Tank Compact" onerror="this.style.background='#0a3d62';this.style.minHeight='215px';this.src=''"/>
+      <div class="catalog-body">
+        <div class="catalog-name">Transparent Tank — Compact Series</div>
+        <div class="catalog-desc">Crystal-clear, food-grade polyethylene. Monitor your water level at a glance — ideal for homes, offices &amp; kitchens.</div>
+        <div class="catalog-pricing">
+          <span class="price-was">Was KSh 14,000.00</span>
+          <span class="price-now">KSh 11,500.00</span>
+          <span class="price-save">Save 18%</span>
+        </div>
+        <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20order%20the%20Transparent%20Compact%20Tank" target="_blank" class="btn-order">💬 Order Now</a>
+      </div>
+    </div>
+
+    <!-- ── NEW: Transparent Tank Mid-Range (catalog card) ── -->
+    <div class="catalog-card" data-anim>
+      <div class="catalog-badge-new" style="position:absolute;top:12px;right:12px;background:rgba(0,201,200,0.15);color:var(--aqua);border:1px solid var(--aqua);font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:0.22rem 0.65rem;border-radius:20px;z-index:2;">Transparent</div>
+      <img src="18.png" class="catalog-img" alt="Transparent Tank Mid-Range" onerror="this.style.background='#0d5289';this.style.minHeight='215px';this.src=''"/>
+      <div class="catalog-body">
+        <div class="catalog-name">Transparent Tank — Mid-Range Series</div>
+        <div class="catalog-desc">High-clarity tank with graduated volume markings. Great for schools, clinics &amp; small businesses.</div>
+        <div class="catalog-pricing">
+          <span class="price-was">Was KSh 14,000.00</span>
+          <span class="price-now">KSh 11,500.00</span>
+          <span class="price-save">Save 18%</span>
+        </div>
+        <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20order%20the%20Transparent%20Mid-Range%20Tank" target="_blank" class="btn-order">💬 Order Now</a>
+      </div>
+    </div>
+
+    <!-- ── NEW: Transparent Tank Heavy-Duty (catalog card) ── -->
+    <div class="catalog-card" data-anim>
+      <div class="catalog-badge" style="background:var(--accent);color:var(--dark);">NEW</div>
+      <div class="catalog-badge-new" style="position:absolute;top:12px;right:12px;background:rgba(0,201,200,0.15);color:var(--aqua);border:1px solid var(--aqua);font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:0.22rem 0.65rem;border-radius:20px;z-index:2;">Transparent</div>
+      <img src="19.png" class="catalog-img" alt="Transparent Tank Heavy-Duty" onerror="this.style.background='#0f5f9e';this.style.minHeight='215px';this.src=''"/>
+      <div class="catalog-body">
+        <div class="catalog-name">Transparent Tank — Heavy-Duty Series</div>
+        <div class="catalog-desc">Thick-walled crystal-clear tank for farms, workshops &amp; construction sites. Instant level monitoring at scale. 1,000L–2,000L.</div>
+        <div class="catalog-pricing">
+          <span class="price-was">Was KSh 4,500.00</span>
+          <span class="price-now">KSh 3,800.00</span>
+          <span class="price-save">Save 16%</span>
+        </div>
+        <a href="https://wa.me/254787030992?text=Hello%20Poa%20Tank%2C%20I%20would%20like%20to%20order%20the%20Transparent%20Heavy-Duty%20Tank" target="_blank" class="btn-order">💬 Order Now</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- GALLERY — now after catalog -->
+<!-- GALLERY -->
 <section id="gallery">
   <div data-anim>
     <p class="section-tag">Our Products</p>
@@ -546,31 +793,26 @@
     <p class="section-sub">Visit any of our three branches across Kenya for stock viewing, pick-up, or expert advice.</p>
   </div>
   <div class="location-cards">
-
     <div class="loc-card" data-anim>
       <div class="loc-city">📍 Nairobi — Branch 1</div>
       <div class="loc-name">Scarlet Business Park (2nd Gate), Athi River</div>
       <div class="loc-addr">BSI-Scarlett Business Park, Mombasa Road, Athi River, Nairobi</div>
     </div>
-
     <div class="loc-card" data-anim>
       <div class="loc-city">📍 Nairobi — Branch 2</div>
       <div class="loc-name">Red Gate, Athi River</div>
       <div class="loc-addr">Red Gate Area, Athi River, Nairobi County</div>
     </div>
-
     <div class="loc-card kisumu" data-anim>
       <div class="loc-city">📍 Kisumu — Ahero</div>
       <div class="loc-name">Ahero, Kisumu</div>
       <div class="loc-addr">Ahero Town, along the Kisumu–Nairobi Highway, Kisumu County</div>
     </div>
-
     <div class="loc-card mombasa" data-anim>
       <div class="loc-city">📍 Mombasa — Changamwe</div>
       <div class="loc-name">Pamba Road, off Refinery Road</div>
       <div class="loc-addr">Changamwe, Pamba Road off Refinery Road, Mombasa</div>
     </div>
-
   </div>
 </section>
 
@@ -669,7 +911,9 @@
   function botReply(text) {
     const t = text.toLowerCase();
     let r = '';
-    if (t.match(/price|cost|bei|how much|ksh|cheap/)) {
+    if (t.match(/transparent|clear|see.through|see through|crystal/)) {
+      r = `✨ Our brand-new <strong>Transparent Water Tanks</strong> just arrived! Available in Compact (100L–500L), Mid-Range (500L–1000L), and Heavy-Duty (1000L–2000L).<br/><a href="#new-arrivals">See New Arrivals →</a> or <a href="${WA}" target="_blank"><strong>WhatsApp us to order!</strong></a>`;
+    } else if (t.match(/price|cost|bei|how much|ksh|cheap/)) {
       r = `💰 Check our full <a href="#prices">Price List</a> — tanks from KSh 1,100 (100L) to KSh 120,000 (24,000L).<br/>Or <a href="${WA}" target="_blank"><strong>WhatsApp us</strong></a> for a custom quote!`;
     } else if (t.match(/location|branch|where|address|nairobi|kisumu|mombasa|ahero|athi|changamwe/)) {
       r = `📍 Our branches:<br/>• <b>Nairobi</b> — Scarlet Business Park & Red Gate, Athi River<br/>• <b>Kisumu</b> — Ahero<br/>• <b>Mombasa</b> — Changamwe, Pamba Road<br/><a href="#locations">See locations →</a>`;
@@ -679,6 +923,8 @@
       r = `📦 We stock tanks from <b>100L up to 24,000L</b>.<br/>See the <a href="#prices">full price list</a> for all sizes &amp; prices.`;
     } else if (t.match(/order|buy|purchase|want|need|get/)) {
       r = `🛒 The quickest way to order is via WhatsApp!<br/><a href="${WA}" target="_blank"><strong>Tap here to message us →</strong></a>`;
+    } else if (t.match(/new|arrival|latest|just/)) {
+      r = `✨ Check out our <a href="#new-arrivals"><strong>New Arrivals</strong></a> — brand-new Transparent Water Tanks just landed!`;
     } else if (t.match(/catalog|offer|sale|discount|promo/)) {
       r = `🔥 Check our <a href="#catalog">Featured Catalog</a> for special sale prices on our most popular tanks!`;
     } else if (t.match(/hello|hi|hey|hujambo|habari|sema|good/)) {
