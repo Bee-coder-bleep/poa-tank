@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jumbo Quality Products Ltd</title>
+    <title>Reviews - Jumbo Quality Products Ltd</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
         /* === RESET & GLOBAL === */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #ffffff; color: #333; }
+        body { background-color: #f9f9f9; color: #333; }
         .container { max-width: 1350px; margin: 0 auto; padding: 0 20px; }
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
@@ -37,118 +37,25 @@
         .search-wrapper button { background: #002c8a; color: white; border: none; padding: 12px 30px; border-radius: 0 6px 6px 0; cursor: pointer; font-weight: bold; }
         .btn-shop-header { background: #002c8a; color: white; padding: 12px 35px; border-radius: 6px; font-weight: bold; border: none; cursor: pointer; }
 
-        /* === HERO GRID WITH BUTTONS === */
-        .hero-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 15px; padding: 30px 0; }
-        .hero-large { position: relative; border-radius: 10px; overflow: hidden; height: 400px; }
-        .hero-large img { width: 100%; height: 100%; object-fit: cover; }
-        .hero-small-col { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .hero-small { position: relative; border-radius: 10px; overflow: hidden; height: 192px; }
-        .hero-small img { width: 100%; height: 100%; object-fit: cover; }
+        /* === BREADCRUMBS === */
+        .breadcrumbs { padding: 20px 0; font-size: 14px; color: #666; }
+        .breadcrumbs span { color: #111; font-weight: 600; }
 
-        .hero-overlay { position: absolute; bottom: 20px; left: 20px; right: 20px; z-index: 2; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-        .hero-overlay h2 { color: white; font-size: 28px; font-weight: 800; text-shadow: 0 2px 10px rgba(0,0,0,0.7); margin: 0; line-height: 1.1; }
-        .hero-overlay .btn-white { background: white; color: #002c8a; padding: 8px 25px; border-radius: 6px; font-weight: 700; font-size: 14px; text-decoration: none; transition: 0.3s; display: inline-block; }
-        .hero-overlay .btn-white:hover { background: #f0f0f0; transform: scale(1.02); }
-        .hero-small .hero-overlay h2 { font-size: 18px; }
-
-        .review-popup { position: absolute; bottom: 20px; left: 20px; right: 20px; background: white; padding: 15px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 12px; z-index: 3; }
-        .review-avatar { background: #5ba3f5; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
-        .review-text { font-size: 13px; color: #444; line-height: 1.4; }
-        .review-text strong { display: block; color: #111; }
-        .review-stars { color: #fbc02d; font-size: 12px; }
-        .review-verified { color: #4caf50; font-size: 11px; font-weight: bold; display: flex; align-items: center; gap: 4px; margin-top: 2px; }
-
-        /* === CATEGORY CARDS === */
-                .section-title { text-align: center; font-size: 32px; font-weight: 700; color: #222; margin: 40px 0 30px; }
-        .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        /* === REVIEW CARDS LAYOUT === */
+        .review-card { background: white; border-radius: 10px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); display: flex; align-items: center; gap: 20px; border: 1px solid #eee; }
+        .review-card:nth-child(even) { flex-direction: row-reverse; text-align: right; }
+        .review-card:nth-child(even) .review-content { align-items: flex-end; }
         
-        .cat-card { 
-            background: #b3d9ff; 
-            border-radius: 20px; 
-            padding: 0; /* Remove the padding for full width image */
-            text-align: center; 
-            transition: 0.3s; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
-            overflow: hidden; /* Keeps image corners rounded */
-            display: flex;
-            flex-direction: column;
-        }
-        .cat-card:nth-child(2) { background: #99ccff; }
-        .cat-card:nth-child(3) { background: #80bfff; }
-        .cat-card:nth-child(4) { background: #66b3ff; }
-        .cat-card:hover { transform: translateY(-5px); }
+        .review-platform { width: 50px; height: 50px; background: #db4437; color: white; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; }
+        .review-platform.brownbook { background: #222; }
         
-        /* New Image Styling */
-        .cat-card img { 
-            width: 100%; 
-            height: 200px; 
-            object-fit: cover; 
-            display: block; 
-            margin-bottom: 0; 
-        }
+        .review-avatar { width: 50px; height: 50px; border-radius: 50%; background: #5ba3f5; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 20px; flex-shrink: 0; }
         
-        /* White text area at the bottom */
-        .cat-card .text-wrap {
-            background: white;
-            padding: 20px 15px;
-            border-radius: 0 0 20px 20px;
-            flex: 1;
-        }
-        .cat-card h3 { color: #002c8a; font-size: 18px; margin-bottom: 8px; }
-        .cat-card p { color: #333; font-size: 13px; line-height: 1.4; }
-
-        /* === EXCLUSIVE SAVINGS BANNER === */
-        .savings-banner {
-            background: #002c8a;
-            border-radius: 10px;
-            padding: 18px 30px;
-            margin: 30px 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .savings-text {
-            color: white;
-            font-size: 18px;
-            font-weight: 600;
-            flex: 1;
-            min-width: 200px;
-        }
-        .savings-btn {
-            background: white;
-            color: #002c8a;
-            padding: 10px 30px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 15px;
-            text-decoration: none;
-            transition: 0.3s;
-            white-space: nowrap;
-        }
-        .savings-btn:hover { background: #f0f0f0; transform: scale(1.02); }
-
-        /* === BEST-SELLING FILTER TABS === */
-        .filter-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 25px; }
-        .filter-tab { padding: 8px 20px; border: 1px solid #002c8a; background: white; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight: 500; color: #002c8a; transition: 0.3s; }
-        .filter-tab:hover { background: #e6edf7; }
-        .filter-tab.active { background: #002c8a; color: white; border-color: #002c8a; }
-        .view-all { text-align: center; margin: 20px 0 40px; color: #002c8a; font-weight: 600; font-size: 14px; }
-
-        /* === BANNERS === */
-        .banner-full { width: 100%; display: block; margin: 20px 0; }
-        .banner-full img { width: 100%; display: block; }
-
-        /* === PRODUCT GRIDS === */
-        .prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin: 20px 0; }
-        .prod-card { background: white; border: 1px solid #eee; border-radius: 12px; padding: 15px; position: relative; text-align: left; transition: 0.3s; }
-        .prod-card:hover { box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
-        .discount-badge { position: absolute; top: 0; left: 0; background: #d32f2f; color: white; font-size: 12px; font-weight: bold; padding: 6px 12px; border-radius: 12px 0 12px 0; }
-        .prod-card img { width: 100%; height: 200px; object-fit: contain; margin-bottom: 15px; }
-        .prod-title { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 8px; line-height: 1.4; }
-        .prod-price { font-size: 15px; font-weight: 700; color: #111; }
-        .prod-price del { color: #999; font-weight: 400; font-size: 13px; margin-left: 8px; }
+        .review-content { display: flex; flex-direction: column; flex: 1; }
+        .review-name { font-weight: 700; color: #d32f2f; font-size: 15px; margin-bottom: 3px; }
+        .review-stars { color: #fbc02d; font-size: 14px; margin-bottom: 5px; }
+        .review-text { font-size: 14px; color: #444; line-height: 1.5; }
+        .review-verified { color: #4caf50; font-size: 11px; font-weight: bold; display: flex; align-items: center; gap: 4px; margin-top: 5px; }
 
         /* === FOOTER === */
         footer { background: #001f5c; color: #ddd; padding: 60px 0 20px; margin-top: 50px; }
@@ -177,22 +84,13 @@
 
         /* === RESPONSIVE === */
         @media (max-width: 992px) {
-            .hero-grid { grid-template-columns: 1fr; height: auto; }
-            .hero-large { height: 300px; }
-            .hero-small-col { grid-template-columns: 1fr 1fr; }
-            .hero-small { height: 140px; }
-            .cat-grid { grid-template-columns: repeat(2, 1fr); }
-            .prod-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
             .nav-links { display: none; }
             .dropdown-grid { width: 100%; grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .review-card { flex-direction: column !important; text-align: center !important; align-items: center; }
+            .review-card:nth-child(even) .review-content { align-items: center !important; text-align: center !important; }
         }
         @media (max-width: 768px) {
-            .hero-small-col { grid-template-columns: 1fr; }
-            .hero-large { height: 250px; }
-            .hero-small { height: 180px; }
-            .cat-grid { grid-template-columns: 1fr; }
-            .prod-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
             .float-container { bottom: 15px; right: 15px; }
@@ -277,7 +175,8 @@
     </script>
 </head>
 <body>
-    <!-- NAVBAR -->
+
+    <!-- NAVBAR (Full Mega-Menu) -->
     <nav>
         <div class="logo"><img src="logo.webp" alt="Jumbo Logo"></div>
         <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
@@ -346,141 +245,346 @@
         </div>
     </div>
 
-    <!-- HERO GRID -->
-    <div class="container hero-grid">
-        <div class="hero-large">
-            <img src="1.webp" alt="POA Tanks">
-            <div class="hero-overlay">
-                <h2>POA TANKS</h2>
-                <a href="shop.html?brand=poa-tanks" class="btn-white">Buy Now</a>
-            </div>
-            
-        </div>
-        <div class="hero-small-col">
-            <div class="hero-small">
-                <img src="2.webp" alt="POA Wire">
-                <div class="hero-overlay">
-                    <h2>POA WIRE</h2>
-                    <a href="shop.html?brand=poa-wire" class="btn-white">Buy Now</a>
-                </div>
-            </div>
-            <div class="hero-small">
-                <img src="3.webp" alt="POA Gutters">
-                <div class="hero-overlay">
-                    <h2>POA GUTTERS AND FITTINGS</h2>
-                    <a href="about.html" class="btn-white">Learn More</a>
-                </div>
-            </div>
-            <div class="hero-small">
-                <img src="4.webp" alt="POA Pipes">
-                <div class="hero-overlay">
-                    <h2>POA PIPES</h2>
-                    <a href="shop.html?brand=poa-pipes" class="btn-white">Buy Now</a>
-                </div>
-            </div>
-            <div class="hero-small">
-                <img src="5.webp" alt="POA Customised">
-                <div class="hero-overlay">
-                    <h2>POA CUSTOMISED PRODUCTS</h2>
-                    <a href="shop.html?brand=poa-customised" class="btn-white">Buy Now</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    
-         <!-- CATEGORIES -->
+    <!-- BREADCRUMBS -->
     <div class="container">
-        <h2 class="section-title">Our Products</h2>
-        <div class="cat-grid">
-            <div class="cat-card">
-                <img src="6.webp" alt="Troughs">
-                <div class="text-wrap">
-                    <h3>Troughs</h3>
-                    <p>Durable troughs for effective water drainage and irrigation.</p>
-                </div>
-            </div>
-            <div class="cat-card">
-                <img src="7.webp" alt="Dustbins">
-                <div class="text-wrap">
-                    <h3>Dustbins</h3>
-                    <p>Sturdy dustbins for easy waste disposal indoors and outdoors.</p>
-                </div>
-            </div>
-            <div class="cat-card">
-                <img src="8.webp" alt="Handwash">
-                <div class="text-wrap">
-                    <h3>Handwash Solutions</h3>
-                    <p>Simple handwash products to promote cleanliness and hygiene.</p>
-                </div>
-            </div>
-            <div class="cat-card">
-                <img src="9.webp" alt="Pots">
-                <div class="text-wrap">
-                    <h3>Pots</h3>
-                    <p>Stylish pots that help your plants thrive beautifully.</p>
-                </div>
+        <div class="breadcrumbs">Home Page <span>➜ Reviews</span></div>
+
+        <!-- Review 1 -->
+        <div class="review-card">
+            <div class="review-platform">G<br>Google</div>
+            <div class="review-avatar">JK</div>
+            <div class="review-content">
+                <div class="review-name">Judy Kanyi</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">What sets you apart is the good customer service and response. Excellent service and Customer care. The turnaround from making my first query from the response which directed me to the right personnel Carol who answered my queries via whatsapp. Made payments and within 6 hours the Poa Tank was in my home. Kudos also to the Driver Isaac.</div>
+                <div class="review-verified">✔ VERIFIED</div>
             </div>
         </div>
 
-        <div class="savings-banner">
-            <div class="savings-text">
-                “Enjoy exclusive savings on bulk orders of POA Tanks! Call us now on 0787 030992”
+        <!-- Review 2 -->
+        <div class="review-card">
+            <div class="review-avatar">JM</div>
+            <div class="review-content">
+                <div class="review-name">Jairus Magak</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Love their product, be it tanks or wire fencing</div>
+                <div class="review-verified">✔ VERIFIED</div>
             </div>
-            <a href="shop.html" class="savings-btn">Shop Now</a>
-        </div>
-    </div>
-
-    <!-- BANNER 1 -->
-    <div class="banner-full"><img src="banner1.webp" alt="Why POATANK"></div>
-
-    <!-- LOFT TANKS -->
-    <div class="container">
-        <h2 class="section-title">Loft Tanks</h2>
-        <div class="prod-grid">
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="10.webp"><div class="prod-title">1000 LTRS POA LOFT WATER STORAGE TANKS</div><div class="prod-price">KSh22,187.00 <del>KSh27,734.00</del></div></div>
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="10.webp"><div class="prod-title">700 LTRS POA LOFT WATER STORAGE TANKS</div><div class="prod-price">KSh18,071.00 <del>KSh22,589.00</del></div></div>
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="10.webp"><div class="prod-title">450 LTRS POA LOFT WATER STORAGE TANKS</div><div class="prod-price">KSh14,313.00 <del>KSh17,891.00</del></div></div>
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="10.webp"><div class="prod-title">250 LTRS POA LOFT WATER STORAGE TANKS</div><div class="prod-price">KSh8,878.00 <del>KSh10,848.00</del></div></div>
-        </div>
-    </div>
-
-    <!-- BANNER 2 -->
-    <div class="banner-full"><img src="banner2.webp" alt="Superbrands"></div>
-
-    <!-- CUSTOMISED PRODUCTS -->
-    <div class="container">
-        <h2 class="section-title">Customised Products</h2>
-        <div class="prod-grid">
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="14.webp"><div class="prod-title">HANDWASH WITH TAP 250LTRS (LOFT)</div><div class="prod-price">KSh17,301.00 <del>KSh21,626.00</del></div></div>
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="15.webp"><div class="prod-title">250 LTRS POA CYLINDRICAL VERT TANK WITH TAP</div><div class="prod-price">KSh11,534.00 <del>KSh14,418.00</del></div></div>
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="16.webp"><div class="prod-title">WATER CANNISTER 30L WITH TAP</div><div class="prod-price">KSh6,861.00 <del>KSh8,576.00</del></div></div>
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="16.webp"><div class="prod-title">WATER CANNISTER SET COMPLETE (APPROX 30LTRS)</div><div class="prod-price">KSh9,720.00 <del>KSh12,150.00</del></div></div>
-        </div>
-    </div>
-
-    <!-- BEST-SELLING SECTION -->
-    <div class="container">
-        <h2 class="section-title">Best-Selling Products</h2>
-        
-        <div class="filter-tabs">
-            <button class="filter-tab active" onclick="filterBestSellers('cylindrical')">Cylindrical Tanks</button>
-            <button class="filter-tab" onclick="filterBestSellers('dustbins')">Dustbins</button>
-            <button class="filter-tab" onclick="filterBestSellers('containers')">Containers</button>
-            <button class="filter-tab" onclick="filterBestSellers('buckets')">Buckets / Pots</button>
-            <button class="filter-tab" onclick="filterBestSellers('troughs')">Troughs</button>
-            <button class="filter-tab" onclick="filterBestSellers('handwash')">Handwash Solutions</button>
-            <button class="filter-tab" onclick="filterBestSellers('loft')">Loft Tanks</button>
-            <button class="filter-tab" onclick="filterBestSellers('underground')">Underground Tanks</button>
+            <div class="review-platform">G<br>Google</div>
         </div>
 
-        <div class="prod-grid" id="bestSellerGrid">
-            <!-- Products injected by JavaScript -->
+        <!-- Review 3 -->
+        <div class="review-card">
+            <div class="review-platform">G<br>Google</div>
+            <div class="review-avatar">BN</div>
+            <div class="review-content">
+                <div class="review-name">Bob Njugi</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Jumbo promptly delivered the 3000L tank I had ordered on Friday, 20/9/24 on Saturday, 21/9/24 (within 24hours). The customer care rep., Carol Ajoy listened, carefully & convincingly addressed my queries & concerns. The delivery team was quite efficient & timely. I'm a happy client.</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
         </div>
 
-        <div class="view-all">
-            <a href="shop.html" style="color: #002c8a; font-weight: 600; font-size: 14px; text-decoration: none;">View All Products &gt;</a>
+        <!-- Review 4 -->
+        <div class="review-card">
+            <div class="review-avatar">SB</div>
+            <div class="review-content">
+                <div class="review-name">Samuel Boli</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Incredibly Customer Friendly</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+            <div class="review-platform">G<br>Google</div>
         </div>
+
+        <!-- Review 5 -->
+        <div class="review-card">
+            <div class="review-platform" style="background:#222;">B<br>Brownbook</div>
+            <div class="review-avatar">LA</div>
+            <div class="review-content">
+                <div class="review-name">Lydia Atieno Agunda</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">I got good customer service when engaging with poa tank and the delivery on time though the second one delayed by a few days but I was assured of a date of which they brought the tank</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+        </div>
+
+        <!-- Review 6 -->
+        <div class="review-card">
+            <div class="review-avatar">KK</div>
+            <div class="review-content">
+                <div class="review-name">Kibet Koech</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Im okay with it</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+            <div class="review-platform" style="background:#222;">B<br>Brownbook</div>
+        </div>
+
+        <!-- Review 7 -->
+        <div class="review-card">
+            <div class="review-platform">G<br>Google</div>
+            <div class="review-avatar">DR</div>
+            <div class="review-content">
+                <div class="review-name">DAVIE Rotich</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Excellent water tanks and mattress shopping point</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+        </div>
+
+        <!-- Review 8 -->
+        <div class="review-card">
+            <div class="review-avatar">JR</div>
+            <div class="review-content">
+                <div class="review-name">J Rukeria</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">In matters water storage tank, POA tanks beats them all...Received my 4th tank...the experience is wow! professionalism all the way from the moment you do inquiry, placing orders, delivery and a follow up message to check how am faring round it up... thanks Emily and the whole team 👏👏</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+            <div class="review-platform">G<br>Google</div>
+        </div>
+
+        <!-- Review 9 -->
+        <div class="review-card">
+            <div class="review-platform">G<br>Google</div>
+            <div class="review-avatar">RW</div>
+            <div class="review-content">
+                <div class="review-name">Roscelyne Wambugu</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Timely and quality service. Thanks</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+        </div>
+
+        <!-- Review 10 -->
+        <div class="review-card">
+            <div class="review-avatar">MW</div>
+            <div class="review-content">
+                <div class="review-name">Muema Wambua</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Enterprising, Innovative.</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+            <div class="review-platform">G<br>Google</div>
+        </div>
+
+        <!-- Review 11 -->
+        <div class="review-card">
+            <div class="review-platform">G<br>Google</div>
+            <div class="review-avatar">WW</div>
+            <div class="review-content">
+                <div class="review-name">WINNIE WANJIRU</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">First class service. First class tanks. Nji poa.</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+        </div>
+
+        <!-- Review 12 -->
+        <div class="review-card">
+            <div class="review-avatar">VO</div>
+            <div class="review-content">
+                <div class="review-name">Victor Odera (Vic Deroth)</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Strong and durable tanks</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+            <div class="review-platform">G<br>Google</div>
+        </div>
+
+        <!-- Review 13 -->
+        <div class="review-card">
+            <div class="review-platform">G<br>Google</div>
+            <div class="review-avatar">IM</div>
+            <div class="review-content">
+                <div class="review-name">Isaac Mwendwa</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Nice place</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+        </div>
+
+        <!-- Review 14 -->
+        <div class="review-card">
+            <div class="review-avatar">EM</div>
+            <div class="review-content">
+                <div class="review-name">Elias Mainga</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Timely delivery and significant advice on station for longevity</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+            <div class="review-platform">G<br>Google</div>
+        </div>
+
+        <!-- Review 15 -->
+        <div class="review-card">
+            <div class="review-platform">G<br>Google</div>
+            <div class="review-avatar">MN</div>
+            <div class="review-content">
+                <div class="review-name">Mary Njuga</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Superb service. I ordered a 5000 Litres Tank while in the United Kingdom, gave the physical address and contact details and POA delivered promptly as I instructed on time for the downy payment occasion at Githiga Village, Kiambu County. I dealt with Carol, she's friendly, polite and is knowledgable with workings of the company. Thank you POA, Will... More</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+        </div>
+
+        <!-- Review 16 -->
+        <div class="review-card">
+            <div class="review-avatar">LR</div>
+            <div class="review-content">
+                <div class="review-name">Lawrence Aweita</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">I made a telephone call and was answered very courteously and professionally. I placed an order and my two tanks were delivered in two days. The sales person kept me updated all the time.</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+            <div class="review-platform">G<br>Google</div>
+        </div>
+
+        <!-- Review 17 -->
+        <div class="review-card">
+            <div class="review-platform">G<br>Google</div>
+            <div class="review-avatar">JK</div>
+            <div class="review-content">
+                <div class="review-name">Jemimah Kiriga</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Good reception and delivery service</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+        </div>
+
+        <!-- Review 18 -->
+        <div class="review-card">
+            <div class="review-avatar">FC</div>
+            <div class="review-content">
+                <div class="review-name">Frankyne Cheti</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Great place to shop quality water tank</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+            <div class="review-platform">G<br>Google</div>
+        </div>
+
+        <!-- Review 19 -->
+        <div class="review-card">
+            <div class="review-platform">G<br>Google</div>
+            <div class="review-avatar">JO</div>
+            <div class="review-content">
+                <div class="review-name">Joy Oyugi</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Fast delivery</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+        </div>
+
+        <!-- Review 20 -->
+        <div class="review-card">
+            <div class="review-avatar">PN</div>
+            <div class="review-content">
+                <div class="review-name">Pauline Ngongi</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Very reliable.</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+            <div class="review-platform">G<br>Google</div>
+        </div>
+
+        <!-- Review 21 -->
+        <div class="review-card">
+            <div class="review-platform">G<br>Google</div>
+            <div class="review-avatar">SR</div>
+            <div class="review-content">
+                <div class="review-name">Stephen Runo</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Fast prompt and efficient</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+        </div>
+
+        <!-- Review 22 -->
+        <div class="review-card">
+            <div class="review-avatar">EZ</div>
+            <div class="review-content">
+                <div class="review-name">Ezekiel Maxwell</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">The company has quality services and quality tanks</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+            <div class="review-platform">G<br>Google</div>
+        </div>
+
+        <!-- Review 23 -->
+        <div class="review-card">
+            <div class="review-platform">G<br>Google</div>
+            <div class="review-avatar">CW</div>
+            <div class="review-content">
+                <div class="review-name">Carol Wambui</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Good customer care services. Kudos Team POA</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+        </div>
+
+        <!-- Review 24 -->
+        <div class="review-card">
+            <div class="review-avatar">FB</div>
+            <div class="review-content">
+                <div class="review-name">Franc Brown</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Best choice products</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+            <div class="review-platform">G<br>Google</div>
+        </div>
+
+        <!-- Review 25 -->
+        <div class="review-card">
+            <div class="review-platform">G<br>Google</div>
+            <div class="review-avatar">RM</div>
+            <div class="review-content">
+                <div class="review-name">Rotty Maina</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">The company has awesome service. Very friendly and welcoming. They show you the tank you're about to purchase and delivery of the tank was quick and fast. Delivery is atleast 48hrs. I would definitely recommend them.</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+        </div>
+
+        <!-- Review 26 -->
+        <div class="review-card">
+            <div class="review-avatar">SM</div>
+            <div class="review-content">
+                <div class="review-name">Samuel Muliinge</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">For quality water storage tanks, I recommend</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+            <div class="review-platform">G<br>Google</div>
+        </div>
+
+        <!-- Review 27 -->
+        <div class="review-card">
+            <div class="review-platform">G<br>Google</div>
+            <div class="review-avatar">JM</div>
+            <div class="review-content">
+                <div class="review-name">Johnson Masai</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Very quality tanks and very good customer service</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+        </div>
+
+        <!-- Review 28 -->
+        <div class="review-card">
+            <div class="review-avatar">EM</div>
+            <div class="review-content">
+                <div class="review-name">Eric Mutura</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">Quality is good</div>
+                <div class="review-verified">✔ VERIFIED</div>
+            </div>
+            <div class="review-platform">G<br>Google</div>
+        </div>
+
     </div>
 
     <!-- FOOTER -->
@@ -532,88 +636,6 @@
         <button class="float-btn float-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
     </div>
 
-    <!-- BEST-SELLING SCRIPT -->
-    <script>
-        const bestSellerData = {
-            'cylindrical': [
-                { name: '12000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 197191, old: 246489 },
-                { name: 'SHORT 10000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 123063, old: 153829 },
-                { name: 'STD 10000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 123063, old: 153829 },
-                { name: '8000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 98102, old: 122628 }
-            ],
-            'dustbins': [
-                { name: 'POA Eco Bin 220 LITRS', img: '22.webp', price: 28580, old: 35725 },
-                { name: 'DUSTBIN 50LTRS COLOURS', img: '23.webp', price: 6954, old: 8693 },
-                { name: 'POA GARBAGE BIN WITH WHEELS', img: '24.webp', price: 6721, old: 8401 },
-                { name: 'DUSTBIN 70LTRS COLOURS', img: '25.webp', price: 9082, old: 11353 }
-            ],
-            'containers': [
-                { name: 'MILK CAN 50LTRS', img: '26.webp', price: 6056, old: 7570 },
-                { name: 'MILK CAN 50LTRS', img: '26.webp', price: 5150, old: 6438 },
-                { name: 'TRAILER TANK COMPLETE WITH TAP', img: '28.webp', price: 7065, old: 8831 }
-            ],
-            'buckets': [
-                { name: 'FLOWER BUCKET SQUARE (APPROX 42L)', img: '29.webp', price: 5328, old: 6660 },
-                { name: 'POA SHELL POT', img: '30.webp', price: 6538, old: 9220 },
-                { name: 'FLOWER BUCKET SQUARE (APPROX 38L)', img: '31.webp', price: 4808, old: 6010 },
-                { name: 'FLOWER BUCKET ROUND (APPROX 20L)', img: '32.webp', price: 2768, old: 3460 }
-            ],
-            'troughs': [
-                { name: 'POA LAUNDRY TROLLEY – HEAVY-DUTY PLASTIC, 133cm', img: '33.webp', price: 45045, old: 56306 },
-                { name: 'POA TP CRATE 780', img: '34.webp', price: 6519, old: 8149 },
-                { name: 'POA TP CRATE 456', img: '35.webp', price: 6519, old: 8149 },
-                { name: 'POA TP CRATE 123', img: '36.webp', price: 6519, old: 8149 }
-            ],
-            'handwash': [
-                { name: 'HANDWASH WITH TAP 250LTRS (LOFT)', img: '14.webp', price: 17301, old: 21626 },
-                { name: '250 LTRS POA CYLINDRICAL VERT TANK WITH TAP', img: '15.webp', price: 11534, old: 14418 },
-                { name: 'WATER CANNISTER 30L WITH TAP', img: '16.webp', price: 6861, old: 8576 },
-                { name: 'WATER CANNISTER SET COMPLETE (APPROX 30LTRS)', img: '16.webp', price: 9720, old: 12150 }
-            ],
-            'loft': [
-                { name: '1000 LTRS POA LOFT WATER STORAGE TANKS', img: '10.webp', price: 22187, old: 27734 },
-                { name: '700 LTRS POA LOFT WATER STORAGE TANKS', img: '10.webp', price: 18071, old: 22589 },
-                { name: '450 LTRS POA LOFT WATER STORAGE TANKS', img: '10.webp', price: 14313, old: 17891 },
-                { name: '250 LTRS POA LOFT WATER STORAGE TANKS', img: '10.webp', price: 8878, old: 10848 }
-            ],
-            'underground': [
-                { name: 'BELL 1500 LTRS UNDERGROUND TANK', img: '45.webp', price: 127163, old: 158954 },
-                { name: 'BELL 350 LTRS UNDERGROUND TANK', img: '45.webp', price: 98144, old: 122680 },
-                { name: 'BELL 230 LTRS UNDERGROUND TANK', img: '45.webp', price: 65559, old: 81949 },
-                { name: 'BELL 100 LTRS UNDERGROUND TANK', img: '45.webp', price: 32053, old: 40066 }
-            ]
-        };
-
-        function filterBestSellers(category) {
-            document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
-
-            const grid = document.getElementById('bestSellerGrid');
-            grid.innerHTML = '';
-            
-            const products = bestSellerData[category] || [];
-            products.forEach(p => {
-                const card = document.createElement('div');
-                card.className = 'prod-card';
-                card.innerHTML = `
-                    <span class="discount-badge">20% off</span>
-                    <img src="${p.img}" alt="${p.name}" onerror="this.src='https://placehold.co/300x300/eee/333?text=Image'">
-                    <div class="prod-title">${p.name}</div>
-                    <div class="prod-price">KSh${p.price.toLocaleString()} <del>KSh${p.old.toLocaleString()}</del></div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // Auto-click Cylindrical Tanks on page load
-        window.onload = function() {
-            // Programmatically trigger the click on the first tab
-            const firstTab = document.querySelector('.filter-tab.active');
-            if (firstTab) {
-                firstTab.click();
-            }
-        };
-    </script>
 
     <!-- MOBILE MENU SCRIPT (added) -->
     <script>

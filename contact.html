@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jumbo Quality Products Ltd</title>
+    <title>Contact Us - Jumbo Quality Products Ltd</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
         /* === RESET & GLOBAL === */
@@ -37,118 +37,54 @@
         .search-wrapper button { background: #002c8a; color: white; border: none; padding: 12px 30px; border-radius: 0 6px 6px 0; cursor: pointer; font-weight: bold; }
         .btn-shop-header { background: #002c8a; color: white; padding: 12px 35px; border-radius: 6px; font-weight: bold; border: none; cursor: pointer; }
 
-        /* === HERO GRID WITH BUTTONS === */
-        .hero-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 15px; padding: 30px 0; }
-        .hero-large { position: relative; border-radius: 10px; overflow: hidden; height: 400px; }
-        .hero-large img { width: 100%; height: 100%; object-fit: cover; }
-        .hero-small-col { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .hero-small { position: relative; border-radius: 10px; overflow: hidden; height: 192px; }
-        .hero-small img { width: 100%; height: 100%; object-fit: cover; }
+        /* === CONTACT HERO === */
+        .contact-hero { text-align: center; padding: 50px 0 30px; }
+        .contact-hero h1 { font-size: 36px; color: #111; margin-bottom: 15px; }
+        .contact-hero p { font-size: 16px; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6; }
 
-        .hero-overlay { position: absolute; bottom: 20px; left: 20px; right: 20px; z-index: 2; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-        .hero-overlay h2 { color: white; font-size: 28px; font-weight: 800; text-shadow: 0 2px 10px rgba(0,0,0,0.7); margin: 0; line-height: 1.1; }
-        .hero-overlay .btn-white { background: white; color: #002c8a; padding: 8px 25px; border-radius: 6px; font-weight: 700; font-size: 14px; text-decoration: none; transition: 0.3s; display: inline-block; }
-        .hero-overlay .btn-white:hover { background: #f0f0f0; transform: scale(1.02); }
-        .hero-small .hero-overlay h2 { font-size: 18px; }
+        /* === INFO GRID === */
+        .info-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; padding: 20px 0 50px; border-bottom: 1px solid #eee; }
+        .info-col { text-align: center; border-right: 1px solid #eee; padding: 0 15px; }
+        .info-col:last-child { border-right: none; }
+        .info-icon { width: 60px; height: 60px; border: 2px solid #002c8a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #002c8a; margin: 0 auto 15px; }
+        .info-col h3 { font-size: 18px; color: #111; margin-bottom: 10px; }
+        .info-col p, .info-col li { font-size: 14px; color: #555; line-height: 1.6; }
+        .info-col ul { list-style: none; }
+        .info-col ul li { margin-bottom: 6px; }
+        .info-col .branch-title { font-weight: 600; color: #333; margin-top: 8px; }
+        .info-col .branch-title:first-of-type { margin-top: 0; }
 
-        .review-popup { position: absolute; bottom: 20px; left: 20px; right: 20px; background: white; padding: 15px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 12px; z-index: 3; }
-        .review-avatar { background: #5ba3f5; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
-        .review-text { font-size: 13px; color: #444; line-height: 1.4; }
-        .review-text strong { display: block; color: #111; }
-        .review-stars { color: #fbc02d; font-size: 12px; }
-        .review-verified { color: #4caf50; font-size: 11px; font-weight: bold; display: flex; align-items: center; gap: 4px; margin-top: 2px; }
+        /* === MAPS STRIP === */
+        .maps-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; padding: 30px 0; }
+        .map-box { height: 200px; border-radius: 12px; overflow: hidden; border: 1px solid #eee; position: relative; }
+        .map-box iframe { width: 100%; height: 100%; border: 0; }
+        .map-box .map-label { position: absolute; bottom: 10px; left: 10px; background: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
 
-        /* === CATEGORY CARDS === */
-                .section-title { text-align: center; font-size: 32px; font-weight: 700; color: #222; margin: 40px 0 30px; }
-        .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        
-        .cat-card { 
-            background: #b3d9ff; 
-            border-radius: 20px; 
-            padding: 0; /* Remove the padding for full width image */
-            text-align: center; 
-            transition: 0.3s; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
-            overflow: hidden; /* Keeps image corners rounded */
-            display: flex;
-            flex-direction: column;
-        }
-        .cat-card:nth-child(2) { background: #99ccff; }
-        .cat-card:nth-child(3) { background: #80bfff; }
-        .cat-card:nth-child(4) { background: #66b3ff; }
-        .cat-card:hover { transform: translateY(-5px); }
-        
-        /* New Image Styling */
-        .cat-card img { 
-            width: 100%; 
-            height: 200px; 
-            object-fit: cover; 
-            display: block; 
-            margin-bottom: 0; 
-        }
-        
-        /* White text area at the bottom */
-        .cat-card .text-wrap {
-            background: white;
-            padding: 20px 15px;
-            border-radius: 0 0 20px 20px;
-            flex: 1;
-        }
-        .cat-card h3 { color: #002c8a; font-size: 18px; margin-bottom: 8px; }
-        .cat-card p { color: #333; font-size: 13px; line-height: 1.4; }
+        /* === FORM SECTION === */
+        .form-section { display: flex; flex-wrap: wrap; gap: 50px; padding: 50px 0; align-items: center; }
+        .form-left { flex: 1; min-width: 350px; }
+        .form-left h2 { font-size: 32px; color: #111; margin-bottom: 10px; }
+        .form-left p { color: #666; font-size: 15px; margin-bottom: 25px; }
+        .form-left .form-group { margin-bottom: 20px; }
+        .form-left label { display: block; font-weight: 500; color: #333; margin-bottom: 6px; }
+        .form-left input, .form-left textarea { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; outline: none; transition: 0.3s; }
+        .form-left input:focus, .form-left textarea:focus { border-color: #002c8a; box-shadow: 0 0 0 3px rgba(0, 44, 138, 0.1); }
+        .form-left textarea { min-height: 120px; resize: vertical; font-family: inherit; }
 
-        /* === EXCLUSIVE SAVINGS BANNER === */
-        .savings-banner {
-            background: #002c8a;
-            border-radius: 10px;
-            padding: 18px 30px;
-            margin: 30px 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .savings-text {
-            color: white;
-            font-size: 18px;
-            font-weight: 600;
-            flex: 1;
-            min-width: 200px;
-        }
-        .savings-btn {
-            background: white;
-            color: #002c8a;
-            padding: 10px 30px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 15px;
-            text-decoration: none;
-            transition: 0.3s;
-            white-space: nowrap;
-        }
-        .savings-btn:hover { background: #f0f0f0; transform: scale(1.02); }
+        /* Fake reCAPTCHA */
+        .recaptcha-box { display: inline-flex; align-items: center; gap: 12px; border: 1px solid #ddd; border-radius: 4px; padding: 10px 15px; background: #f9f9f9; margin-bottom: 20px; cursor: pointer; transition: 0.2s; }
+        .recaptcha-box:hover { border-color: #bbb; }
+        .recaptcha-box .check { width: 24px; height: 24px; border: 2px solid #999; border-radius: 3px; display: flex; align-items: center; justify-content: center; }
+        .recaptcha-box.active .check { background: #002c8a; border-color: #002c8a; color: white; }
+        .recaptcha-box .label { font-size: 14px; color: #333; font-weight: 500; }
+        .recaptcha-logo { margin-left: auto; display: flex; align-items: center; gap: 4px; color: #888; font-size: 12px; }
+        .recaptcha-logo img { height: 30px; }
 
-        /* === BEST-SELLING FILTER TABS === */
-        .filter-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 25px; }
-        .filter-tab { padding: 8px 20px; border: 1px solid #002c8a; background: white; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight: 500; color: #002c8a; transition: 0.3s; }
-        .filter-tab:hover { background: #e6edf7; }
-        .filter-tab.active { background: #002c8a; color: white; border-color: #002c8a; }
-        .view-all { text-align: center; margin: 20px 0 40px; color: #002c8a; font-weight: 600; font-size: 14px; }
+        .form-left .btn-submit { background: #002c8a; color: white; border: none; padding: 12px 40px; border-radius: 8px; font-weight: 600; font-size: 16px; cursor: pointer; transition: 0.3s; }
+        .form-left .btn-submit:hover { background: #001f5c; }
 
-        /* === BANNERS === */
-        .banner-full { width: 100%; display: block; margin: 20px 0; }
-        .banner-full img { width: 100%; display: block; }
-
-        /* === PRODUCT GRIDS === */
-        .prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin: 20px 0; }
-        .prod-card { background: white; border: 1px solid #eee; border-radius: 12px; padding: 15px; position: relative; text-align: left; transition: 0.3s; }
-        .prod-card:hover { box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
-        .discount-badge { position: absolute; top: 0; left: 0; background: #d32f2f; color: white; font-size: 12px; font-weight: bold; padding: 6px 12px; border-radius: 12px 0 12px 0; }
-        .prod-card img { width: 100%; height: 200px; object-fit: contain; margin-bottom: 15px; }
-        .prod-title { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 8px; line-height: 1.4; }
-        .prod-price { font-size: 15px; font-weight: 700; color: #111; }
-        .prod-price del { color: #999; font-weight: 400; font-size: 13px; margin-left: 8px; }
+        .form-right { flex: 1; min-width: 300px; }
+        .form-right img { width: 100%; border-radius: 16px; display: block; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
 
         /* === FOOTER === */
         footer { background: #001f5c; color: #ddd; padding: 60px 0 20px; margin-top: 50px; }
@@ -177,22 +113,18 @@
 
         /* === RESPONSIVE === */
         @media (max-width: 992px) {
-            .hero-grid { grid-template-columns: 1fr; height: auto; }
-            .hero-large { height: 300px; }
-            .hero-small-col { grid-template-columns: 1fr 1fr; }
-            .hero-small { height: 140px; }
-            .cat-grid { grid-template-columns: repeat(2, 1fr); }
-            .prod-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
             .nav-links { display: none; }
             .dropdown-grid { width: 100%; grid-template-columns: 1fr; }
+            .info-grid { grid-template-columns: repeat(2, 1fr); }
+            .info-col { border-right: none; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+            .info-col:last-child { border-bottom: none; }
+            .maps-strip { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 768px) {
-            .hero-small-col { grid-template-columns: 1fr; }
-            .hero-large { height: 250px; }
-            .hero-small { height: 180px; }
-            .cat-grid { grid-template-columns: 1fr; }
-            .prod-grid { grid-template-columns: 1fr; }
+            .info-grid { grid-template-columns: 1fr; }
+            .maps-strip { grid-template-columns: 1fr; }
+            .form-section { flex-direction: column-reverse; }
             .footer-grid { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
             .float-container { bottom: 15px; right: 15px; }
@@ -277,6 +209,7 @@
     </script>
 </head>
 <body>
+
     <!-- NAVBAR -->
     <nav>
         <div class="logo"><img src="logo.webp" alt="Jumbo Logo"></div>
@@ -346,140 +279,109 @@
         </div>
     </div>
 
-    <!-- HERO GRID -->
-    <div class="container hero-grid">
-        <div class="hero-large">
-            <img src="1.webp" alt="POA Tanks">
-            <div class="hero-overlay">
-                <h2>POA TANKS</h2>
-                <a href="shop.html?brand=poa-tanks" class="btn-white">Buy Now</a>
-            </div>
-            
+    <!-- CONTACT HERO -->
+    <div class="container contact-hero">
+        <h1>Questions? Contact Us Anytime!</h1>
+        <p>We're here to assist you with all your needs. Whether you require more information about our products or need guidance on installation and usage, our friendly team is ready to help. Feel free to reach out to us for any assistance you may need!</p>
+    </div>
+
+    <!-- INFO GRID -->
+    <div class="container info-grid">
+        <div class="info-col">
+            <div class="info-icon">📞</div>
+            <h3>Contact Us</h3>
+            <ul>
+                <li><strong>+254 787 030992</strong></li>
+            </ul>
         </div>
-        <div class="hero-small-col">
-            <div class="hero-small">
-                <img src="2.webp" alt="POA Wire">
-                <div class="hero-overlay">
-                    <h2>POA WIRE</h2>
-                    <a href="shop.html?brand=poa-wire" class="btn-white">Buy Now</a>
-                </div>
-            </div>
-            <div class="hero-small">
-                <img src="3.webp" alt="POA Gutters">
-                <div class="hero-overlay">
-                    <h2>POA GUTTERS AND FITTINGS</h2>
-                    <a href="about.html" class="btn-white">Learn More</a>
-                </div>
-            </div>
-            <div class="hero-small">
-                <img src="4.webp" alt="POA Pipes">
-                <div class="hero-overlay">
-                    <h2>POA PIPES</h2>
-                    <a href="shop.html?brand=poa-pipes" class="btn-white">Buy Now</a>
-                </div>
-            </div>
-            <div class="hero-small">
-                <img src="5.webp" alt="POA Customised">
-                <div class="hero-overlay">
-                    <h2>POA CUSTOMISED PRODUCTS</h2>
-                    <a href="shop.html?brand=poa-customised" class="btn-white">Buy Now</a>
-                </div>
-            </div>
+        <div class="info-col">
+            <div class="info-icon">📍</div>
+            <h3>Address</h3>
+            <ul>
+                <li>Athi River - Along Nairobi Mombasa Road between Mlolongo and Athi River intersections, Scarlet Business Park (2nd Red Gate)</li>
+                <li class="branch-title">Mombasa -</li>
+                <li>Pamba Road Off Refinery Road Changamwe</li>
+                <li class="branch-title">Ahero -</li>
+                <li>Along Kisumu Ahero Highway</li>
+                <li class="branch-title">Nyeri -</li>
+                <li>Kingongo off Nyeri-Nyahururu Highway, Nyeri, Kenya</li>
+            </ul>
+        </div>
+        <div class="info-col">
+            <div class="info-icon">🕐</div>
+            <h3>Opening Hours</h3>
+            <ul>
+                <li><strong>Monday-Friday :</strong> 8:15 AM – 5:30 PM</li>
+                <li><strong>Saturday :</strong> 8:15 AM – 3:00 PM</li>
+                <li><strong>Closed on Sundays and Public Holidays</strong></li>
+            </ul>
+        </div>
+        <div class="info-col">
+            <div class="info-icon">✉</div>
+            <h3>Email</h3>
+            <ul>
+                <li><strong>poatankfactory@gmail.com</strong></li>
+            </ul>
         </div>
     </div>
 
-    
-         <!-- CATEGORIES -->
-    <div class="container">
-        <h2 class="section-title">Our Products</h2>
-        <div class="cat-grid">
-            <div class="cat-card">
-                <img src="6.webp" alt="Troughs">
-                <div class="text-wrap">
-                    <h3>Troughs</h3>
-                    <p>Durable troughs for effective water drainage and irrigation.</p>
-                </div>
-            </div>
-            <div class="cat-card">
-                <img src="7.webp" alt="Dustbins">
-                <div class="text-wrap">
-                    <h3>Dustbins</h3>
-                    <p>Sturdy dustbins for easy waste disposal indoors and outdoors.</p>
-                </div>
-            </div>
-            <div class="cat-card">
-                <img src="8.webp" alt="Handwash">
-                <div class="text-wrap">
-                    <h3>Handwash Solutions</h3>
-                    <p>Simple handwash products to promote cleanliness and hygiene.</p>
-                </div>
-            </div>
-            <div class="cat-card">
-                <img src="9.webp" alt="Pots">
-                <div class="text-wrap">
-                    <h3>Pots</h3>
-                    <p>Stylish pots that help your plants thrive beautifully.</p>
-                </div>
-            </div>
+    <!-- MAPS STRIP -->
+    <div class="container maps-strip">
+        <div class="map-box">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.388181647976!2d36.821946!3d-1.292066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f117a68469923%3A0x8f9d5f3e5f3e5f3e!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" loading="lazy"></iframe>
+            <div class="map-label">📍 Athi River</div>
         </div>
-
-        <div class="savings-banner">
-            <div class="savings-text">
-                “Enjoy exclusive savings on bulk orders of POA Tanks! Call us now on 0787 030992”
-            </div>
-            <a href="shop.html" class="savings-btn">Shop Now</a>
+        <div class="map-box">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.388181647976!2d39.6682065!3d-4.0434771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1840136c3a3f7a8b%3A0x8f9d5f3e5f3e5f3e!2sMombasa%2C%20Kenya!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" loading="lazy"></iframe>
+            <div class="map-label">📍 Mombasa</div>
+        </div>
+        <div class="map-box">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.388181647976!2d34.9168578!3d-0.1768144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1831d9c2a0b0a0b1%3A0x8f9d5f3e5f3e5f3e!2sAhero%2C%20Kenya!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" loading="lazy"></iframe>
+            <div class="map-label">📍 Ahero</div>
+        </div>
+        <div class="map-box">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.388181647976!2d36.9476213!3d-0.4243198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182e3e5f3e5f3e5f%3A0x8f9d5f3e5f3e5f3e!2sNyeri%2C%20Kenya!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" loading="lazy"></iframe>
+            <div class="map-label">📍 Nyeri</div>
         </div>
     </div>
 
-    <!-- BANNER 1 -->
-    <div class="banner-full"><img src="banner1.webp" alt="Why POATANK"></div>
+    <!-- FORM SECTION -->
+    <div class="container form-section">
+        <div class="form-left">
+            <h2>Get In Touch</h2>
+            <p>Feel free to reach out to us for any enquiries, assistance, or feedback. Our customer service team is ready to help you via phone or email. We value your communication and aim to respond promptly to ensure your satisfaction.</p>
+            <form onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent.');">
+                <div class="form-group">
+                    <label>Your name</label>
+                    <input type="text" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label>Your email</label>
+                    <input type="email" placeholder="Your email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone No.</label>
+                    <input type="tel" placeholder="Phone No." required>
+                </div>
+                <div class="form-group">
+                    <label>Your message</label>
+                    <textarea placeholder="Your message" required></textarea>
+                </div>
+                
+                <div class="recaptcha-box" onclick="this.classList.toggle('active')">
+                    <div class="check">✓</div>
+                    <span class="label">I'm not a robot</span>
+                    <div class="recaptcha-logo">
+                        <img src="captcha-verify-icon.webp" onerror="this.onerror=null;this.src='https://placehold.co/40x40/transparent/999?text=logo'" alt="captcha logo" style="height:24px;">
+                        <span>reCAPTCHA</span>
+                    </div>
+                </div>
 
-    <!-- LOFT TANKS -->
-    <div class="container">
-        <h2 class="section-title">Loft Tanks</h2>
-        <div class="prod-grid">
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="10.webp"><div class="prod-title">1000 LTRS POA LOFT WATER STORAGE TANKS</div><div class="prod-price">KSh22,187.00 <del>KSh27,734.00</del></div></div>
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="10.webp"><div class="prod-title">700 LTRS POA LOFT WATER STORAGE TANKS</div><div class="prod-price">KSh18,071.00 <del>KSh22,589.00</del></div></div>
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="10.webp"><div class="prod-title">450 LTRS POA LOFT WATER STORAGE TANKS</div><div class="prod-price">KSh14,313.00 <del>KSh17,891.00</del></div></div>
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="10.webp"><div class="prod-title">250 LTRS POA LOFT WATER STORAGE TANKS</div><div class="prod-price">KSh8,878.00 <del>KSh10,848.00</del></div></div>
+                <button type="submit" class="btn-submit">Submit</button>
+            </form>
         </div>
-    </div>
-
-    <!-- BANNER 2 -->
-    <div class="banner-full"><img src="banner2.webp" alt="Superbrands"></div>
-
-    <!-- CUSTOMISED PRODUCTS -->
-    <div class="container">
-        <h2 class="section-title">Customised Products</h2>
-        <div class="prod-grid">
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="14.webp"><div class="prod-title">HANDWASH WITH TAP 250LTRS (LOFT)</div><div class="prod-price">KSh17,301.00 <del>KSh21,626.00</del></div></div>
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="15.webp"><div class="prod-title">250 LTRS POA CYLINDRICAL VERT TANK WITH TAP</div><div class="prod-price">KSh11,534.00 <del>KSh14,418.00</del></div></div>
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="16.webp"><div class="prod-title">WATER CANNISTER 30L WITH TAP</div><div class="prod-price">KSh6,861.00 <del>KSh8,576.00</del></div></div>
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="16.webp"><div class="prod-title">WATER CANNISTER SET COMPLETE (APPROX 30LTRS)</div><div class="prod-price">KSh9,720.00 <del>KSh12,150.00</del></div></div>
-        </div>
-    </div>
-
-    <!-- BEST-SELLING SECTION -->
-    <div class="container">
-        <h2 class="section-title">Best-Selling Products</h2>
-        
-        <div class="filter-tabs">
-            <button class="filter-tab active" onclick="filterBestSellers('cylindrical')">Cylindrical Tanks</button>
-            <button class="filter-tab" onclick="filterBestSellers('dustbins')">Dustbins</button>
-            <button class="filter-tab" onclick="filterBestSellers('containers')">Containers</button>
-            <button class="filter-tab" onclick="filterBestSellers('buckets')">Buckets / Pots</button>
-            <button class="filter-tab" onclick="filterBestSellers('troughs')">Troughs</button>
-            <button class="filter-tab" onclick="filterBestSellers('handwash')">Handwash Solutions</button>
-            <button class="filter-tab" onclick="filterBestSellers('loft')">Loft Tanks</button>
-            <button class="filter-tab" onclick="filterBestSellers('underground')">Underground Tanks</button>
-        </div>
-
-        <div class="prod-grid" id="bestSellerGrid">
-            <!-- Products injected by JavaScript -->
-        </div>
-
-        <div class="view-all">
-            <a href="shop.html" style="color: #002c8a; font-weight: 600; font-size: 14px; text-decoration: none;">View All Products &gt;</a>
+        <div class="form-right">
+            <img src="21.png" alt="Jumbo Team Member" onerror="this.src='https://placehold.co/600x600/ccc/333?text=Team+Member'">
         </div>
     </div>
 
@@ -532,88 +434,6 @@
         <button class="float-btn float-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
     </div>
 
-    <!-- BEST-SELLING SCRIPT -->
-    <script>
-        const bestSellerData = {
-            'cylindrical': [
-                { name: '12000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 197191, old: 246489 },
-                { name: 'SHORT 10000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 123063, old: 153829 },
-                { name: 'STD 10000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 123063, old: 153829 },
-                { name: '8000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 98102, old: 122628 }
-            ],
-            'dustbins': [
-                { name: 'POA Eco Bin 220 LITRS', img: '22.webp', price: 28580, old: 35725 },
-                { name: 'DUSTBIN 50LTRS COLOURS', img: '23.webp', price: 6954, old: 8693 },
-                { name: 'POA GARBAGE BIN WITH WHEELS', img: '24.webp', price: 6721, old: 8401 },
-                { name: 'DUSTBIN 70LTRS COLOURS', img: '25.webp', price: 9082, old: 11353 }
-            ],
-            'containers': [
-                { name: 'MILK CAN 50LTRS', img: '26.webp', price: 6056, old: 7570 },
-                { name: 'MILK CAN 50LTRS', img: '26.webp', price: 5150, old: 6438 },
-                { name: 'TRAILER TANK COMPLETE WITH TAP', img: '28.webp', price: 7065, old: 8831 }
-            ],
-            'buckets': [
-                { name: 'FLOWER BUCKET SQUARE (APPROX 42L)', img: '29.webp', price: 5328, old: 6660 },
-                { name: 'POA SHELL POT', img: '30.webp', price: 6538, old: 9220 },
-                { name: 'FLOWER BUCKET SQUARE (APPROX 38L)', img: '31.webp', price: 4808, old: 6010 },
-                { name: 'FLOWER BUCKET ROUND (APPROX 20L)', img: '32.webp', price: 2768, old: 3460 }
-            ],
-            'troughs': [
-                { name: 'POA LAUNDRY TROLLEY – HEAVY-DUTY PLASTIC, 133cm', img: '33.webp', price: 45045, old: 56306 },
-                { name: 'POA TP CRATE 780', img: '34.webp', price: 6519, old: 8149 },
-                { name: 'POA TP CRATE 456', img: '35.webp', price: 6519, old: 8149 },
-                { name: 'POA TP CRATE 123', img: '36.webp', price: 6519, old: 8149 }
-            ],
-            'handwash': [
-                { name: 'HANDWASH WITH TAP 250LTRS (LOFT)', img: '14.webp', price: 17301, old: 21626 },
-                { name: '250 LTRS POA CYLINDRICAL VERT TANK WITH TAP', img: '15.webp', price: 11534, old: 14418 },
-                { name: 'WATER CANNISTER 30L WITH TAP', img: '16.webp', price: 6861, old: 8576 },
-                { name: 'WATER CANNISTER SET COMPLETE (APPROX 30LTRS)', img: '16.webp', price: 9720, old: 12150 }
-            ],
-            'loft': [
-                { name: '1000 LTRS POA LOFT WATER STORAGE TANKS', img: '10.webp', price: 22187, old: 27734 },
-                { name: '700 LTRS POA LOFT WATER STORAGE TANKS', img: '10.webp', price: 18071, old: 22589 },
-                { name: '450 LTRS POA LOFT WATER STORAGE TANKS', img: '10.webp', price: 14313, old: 17891 },
-                { name: '250 LTRS POA LOFT WATER STORAGE TANKS', img: '10.webp', price: 8878, old: 10848 }
-            ],
-            'underground': [
-                { name: 'BELL 1500 LTRS UNDERGROUND TANK', img: '45.webp', price: 127163, old: 158954 },
-                { name: 'BELL 350 LTRS UNDERGROUND TANK', img: '45.webp', price: 98144, old: 122680 },
-                { name: 'BELL 230 LTRS UNDERGROUND TANK', img: '45.webp', price: 65559, old: 81949 },
-                { name: 'BELL 100 LTRS UNDERGROUND TANK', img: '45.webp', price: 32053, old: 40066 }
-            ]
-        };
-
-        function filterBestSellers(category) {
-            document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
-
-            const grid = document.getElementById('bestSellerGrid');
-            grid.innerHTML = '';
-            
-            const products = bestSellerData[category] || [];
-            products.forEach(p => {
-                const card = document.createElement('div');
-                card.className = 'prod-card';
-                card.innerHTML = `
-                    <span class="discount-badge">20% off</span>
-                    <img src="${p.img}" alt="${p.name}" onerror="this.src='https://placehold.co/300x300/eee/333?text=Image'">
-                    <div class="prod-title">${p.name}</div>
-                    <div class="prod-price">KSh${p.price.toLocaleString()} <del>KSh${p.old.toLocaleString()}</del></div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // Auto-click Cylindrical Tanks on page load
-        window.onload = function() {
-            // Programmatically trigger the click on the first tab
-            const firstTab = document.querySelector('.filter-tab.active');
-            if (firstTab) {
-                firstTab.click();
-            }
-        };
-    </script>
 
     <!-- MOBILE MENU SCRIPT (added) -->
     <script>

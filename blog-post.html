@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jumbo Quality Products Ltd</title>
+    <title>Blog Post - Jumbo Quality Products Ltd</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
         /* === RESET & GLOBAL === */
@@ -37,118 +37,41 @@
         .search-wrapper button { background: #002c8a; color: white; border: none; padding: 12px 30px; border-radius: 0 6px 6px 0; cursor: pointer; font-weight: bold; }
         .btn-shop-header { background: #002c8a; color: white; padding: 12px 35px; border-radius: 6px; font-weight: bold; border: none; cursor: pointer; }
 
-        /* === HERO GRID WITH BUTTONS === */
-        .hero-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 15px; padding: 30px 0; }
-        .hero-large { position: relative; border-radius: 10px; overflow: hidden; height: 400px; }
-        .hero-large img { width: 100%; height: 100%; object-fit: cover; }
-        .hero-small-col { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .hero-small { position: relative; border-radius: 10px; overflow: hidden; height: 192px; }
-        .hero-small img { width: 100%; height: 100%; object-fit: cover; }
+        /* === BREADCRUMBS === */
+        .breadcrumbs { padding: 20px 0; font-size: 14px; color: #666; }
+        .breadcrumbs span { color: #111; font-weight: 600; }
 
-        .hero-overlay { position: absolute; bottom: 20px; left: 20px; right: 20px; z-index: 2; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-        .hero-overlay h2 { color: white; font-size: 28px; font-weight: 800; text-shadow: 0 2px 10px rgba(0,0,0,0.7); margin: 0; line-height: 1.1; }
-        .hero-overlay .btn-white { background: white; color: #002c8a; padding: 8px 25px; border-radius: 6px; font-weight: 700; font-size: 14px; text-decoration: none; transition: 0.3s; display: inline-block; }
-        .hero-overlay .btn-white:hover { background: #f0f0f0; transform: scale(1.02); }
-        .hero-small .hero-overlay h2 { font-size: 18px; }
+        /* === BLOG POST LAYOUT === */
+        .post-header { margin-bottom: 30px; }
+        .post-header h1 { font-size: 34px; font-weight: 700; color: #111; margin-bottom: 10px; line-height: 1.3; }
+        .post-meta { font-size: 14px; color: #888; }
 
-        .review-popup { position: absolute; bottom: 20px; left: 20px; right: 20px; background: white; padding: 15px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 12px; z-index: 3; }
-        .review-avatar { background: #5ba3f5; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
-        .review-text { font-size: 13px; color: #444; line-height: 1.4; }
-        .review-text strong { display: block; color: #111; }
-        .review-stars { color: #fbc02d; font-size: 12px; }
-        .review-verified { color: #4caf50; font-size: 11px; font-weight: bold; display: flex; align-items: center; gap: 4px; margin-top: 2px; }
+        .post-content { max-width: 900px; margin: 0 auto; }
+        .post-content h3 { font-size: 22px; font-weight: 700; color: #002c8a; margin: 30px 0 15px; }
+        .post-content p { font-size: 17px; line-height: 1.8; color: #444; margin-bottom: 20px; }
+        .post-content ul { list-style: disc; padding-left: 25px; margin-bottom: 20px; }
+        .post-content ul li { font-size: 17px; line-height: 1.8; color: #444; margin-bottom: 8px; }
 
-        /* === CATEGORY CARDS === */
-                .section-title { text-align: center; font-size: 32px; font-weight: 700; color: #222; margin: 40px 0 30px; }
-        .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        
-        .cat-card { 
-            background: #b3d9ff; 
-            border-radius: 20px; 
-            padding: 0; /* Remove the padding for full width image */
-            text-align: center; 
-            transition: 0.3s; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
-            overflow: hidden; /* Keeps image corners rounded */
-            display: flex;
-            flex-direction: column;
-        }
-        .cat-card:nth-child(2) { background: #99ccff; }
-        .cat-card:nth-child(3) { background: #80bfff; }
-        .cat-card:nth-child(4) { background: #66b3ff; }
-        .cat-card:hover { transform: translateY(-5px); }
-        
-        /* New Image Styling */
-        .cat-card img { 
-            width: 100%; 
-            height: 200px; 
-            object-fit: cover; 
-            display: block; 
-            margin-bottom: 0; 
-        }
-        
-        /* White text area at the bottom */
-        .cat-card .text-wrap {
-            background: white;
-            padding: 20px 15px;
-            border-radius: 0 0 20px 20px;
-            flex: 1;
-        }
-        .cat-card h3 { color: #002c8a; font-size: 18px; margin-bottom: 8px; }
-        .cat-card p { color: #333; font-size: 13px; line-height: 1.4; }
+        .post-nav { display: flex; justify-content: space-between; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 20px 0; margin: 40px 0; flex-wrap: wrap; gap: 15px; }
+        .post-nav a { font-weight: 600; color: #002c8a; font-size: 15px; }
+        .post-nav a:hover { text-decoration: underline; }
+        .post-nav .prev { text-align: left; }
+        .post-nav .next { text-align: right; }
 
-        /* === EXCLUSIVE SAVINGS BANNER === */
-        .savings-banner {
-            background: #002c8a;
-            border-radius: 10px;
-            padding: 18px 30px;
-            margin: 30px 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .savings-text {
-            color: white;
-            font-size: 18px;
-            font-weight: 600;
-            flex: 1;
-            min-width: 200px;
-        }
-        .savings-btn {
-            background: white;
-            color: #002c8a;
-            padding: 10px 30px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 15px;
-            text-decoration: none;
-            transition: 0.3s;
-            white-space: nowrap;
-        }
-        .savings-btn:hover { background: #f0f0f0; transform: scale(1.02); }
+        .post-tags { font-size: 15px; color: #666; margin-bottom: 40px; }
+        .post-tags strong { color: #333; }
 
-        /* === BEST-SELLING FILTER TABS === */
-        .filter-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 25px; }
-        .filter-tab { padding: 8px 20px; border: 1px solid #002c8a; background: white; border-radius: 20px; cursor: pointer; font-size: 14px; font-weight: 500; color: #002c8a; transition: 0.3s; }
-        .filter-tab:hover { background: #e6edf7; }
-        .filter-tab.active { background: #002c8a; color: white; border-color: #002c8a; }
-        .view-all { text-align: center; margin: 20px 0 40px; color: #002c8a; font-weight: 600; font-size: 14px; }
-
-        /* === BANNERS === */
-        .banner-full { width: 100%; display: block; margin: 20px 0; }
-        .banner-full img { width: 100%; display: block; }
-
-        /* === PRODUCT GRIDS === */
-        .prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin: 20px 0; }
-        .prod-card { background: white; border: 1px solid #eee; border-radius: 12px; padding: 15px; position: relative; text-align: left; transition: 0.3s; }
-        .prod-card:hover { box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
-        .discount-badge { position: absolute; top: 0; left: 0; background: #d32f2f; color: white; font-size: 12px; font-weight: bold; padding: 6px 12px; border-radius: 12px 0 12px 0; }
-        .prod-card img { width: 100%; height: 200px; object-fit: contain; margin-bottom: 15px; }
-        .prod-title { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 8px; line-height: 1.4; }
-        .prod-price { font-size: 15px; font-weight: 700; color: #111; }
-        .prod-price del { color: #999; font-weight: 400; font-size: 13px; margin-left: 8px; }
+        /* === COMMENTS FORM === */
+        .comment-section { max-width: 900px; margin: 0 auto 60px; }
+        .comment-section h3 { font-size: 22px; font-weight: 700; color: #111; margin-bottom: 20px; }
+        .comment-form textarea { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; min-height: 120px; margin-bottom: 15px; outline: none; font-family: inherit; }
+        .comment-form textarea:focus { border-color: #002c8a; }
+        .comment-form-row { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 15px; }
+        .comment-form-row input { flex: 1; min-width: 200px; padding: 12px 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; outline: none; }
+        .comment-form-row input:focus { border-color: #002c8a; }
+        .comment-form .btn-submit { background: #002c8a; color: white; border: none; padding: 12px 35px; border-radius: 8px; font-weight: 600; font-size: 16px; cursor: pointer; }
+        .comment-form .btn-submit:hover { background: #001f5c; }
+        .comment-form .req { color: #d32f2f; }
 
         /* === FOOTER === */
         footer { background: #001f5c; color: #ddd; padding: 60px 0 20px; margin-top: 50px; }
@@ -177,24 +100,16 @@
 
         /* === RESPONSIVE === */
         @media (max-width: 992px) {
-            .hero-grid { grid-template-columns: 1fr; height: auto; }
-            .hero-large { height: 300px; }
-            .hero-small-col { grid-template-columns: 1fr 1fr; }
-            .hero-small { height: 140px; }
-            .cat-grid { grid-template-columns: repeat(2, 1fr); }
-            .prod-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
             .nav-links { display: none; }
             .dropdown-grid { width: 100%; grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 768px) {
-            .hero-small-col { grid-template-columns: 1fr; }
-            .hero-large { height: 250px; }
-            .hero-small { height: 180px; }
-            .cat-grid { grid-template-columns: 1fr; }
-            .prod-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
+            .post-header h1 { font-size: 26px; }
+            .post-nav { flex-direction: column; align-items: center; text-align: center; }
+            .comment-form-row { flex-direction: column; }
             .float-container { bottom: 15px; right: 15px; }
             .float-btn { width: 42px; height: 42px; font-size: 20px; }
         }
@@ -277,6 +192,7 @@
     </script>
 </head>
 <body>
+
     <!-- NAVBAR -->
     <nav>
         <div class="logo"><img src="logo.webp" alt="Jumbo Logo"></div>
@@ -346,140 +262,108 @@
         </div>
     </div>
 
-    <!-- HERO GRID -->
-    <div class="container hero-grid">
-        <div class="hero-large">
-            <img src="1.webp" alt="POA Tanks">
-            <div class="hero-overlay">
-                <h2>POA TANKS</h2>
-                <a href="shop.html?brand=poa-tanks" class="btn-white">Buy Now</a>
-            </div>
-            
-        </div>
-        <div class="hero-small-col">
-            <div class="hero-small">
-                <img src="2.webp" alt="POA Wire">
-                <div class="hero-overlay">
-                    <h2>POA WIRE</h2>
-                    <a href="shop.html?brand=poa-wire" class="btn-white">Buy Now</a>
-                </div>
-            </div>
-            <div class="hero-small">
-                <img src="3.webp" alt="POA Gutters">
-                <div class="hero-overlay">
-                    <h2>POA GUTTERS AND FITTINGS</h2>
-                    <a href="about.html" class="btn-white">Learn More</a>
-                </div>
-            </div>
-            <div class="hero-small">
-                <img src="4.webp" alt="POA Pipes">
-                <div class="hero-overlay">
-                    <h2>POA PIPES</h2>
-                    <a href="shop.html?brand=poa-pipes" class="btn-white">Buy Now</a>
-                </div>
-            </div>
-            <div class="hero-small">
-                <img src="5.webp" alt="POA Customised">
-                <div class="hero-overlay">
-                    <h2>POA CUSTOMISED PRODUCTS</h2>
-                    <a href="shop.html?brand=poa-customised" class="btn-white">Buy Now</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    
-         <!-- CATEGORIES -->
+    <!-- BREADCRUMBS -->
     <div class="container">
-        <h2 class="section-title">Our Products</h2>
-        <div class="cat-grid">
-            <div class="cat-card">
-                <img src="6.webp" alt="Troughs">
-                <div class="text-wrap">
-                    <h3>Troughs</h3>
-                    <p>Durable troughs for effective water drainage and irrigation.</p>
-                </div>
+        <div class="breadcrumbs">Home Page <span>➜ Blog</span> <span>➜ A First-Time Buyer’s Guide to Water Tanks for Sale in Kenya</span></div>
+
+        <!-- BLOG POST CONTENT -->
+        <div class="post-content">
+            <div class="post-header">
+                <h1>A First-Time Buyer’s Guide to Water Tanks for Sale in Kenya</h1>
+                <div class="post-meta">May 30, 2026 &bull; By Jumbo Quality</div>
             </div>
-            <div class="cat-card">
-                <img src="7.webp" alt="Dustbins">
-                <div class="text-wrap">
-                    <h3>Dustbins</h3>
-                    <p>Sturdy dustbins for easy waste disposal indoors and outdoors.</p>
-                </div>
+
+            <p>Water shortages are a fact of life across much of Kenya. Whether you’re in Nairobi dealing with erratic supply schedules, or out in Nakuru where dry spells stretch for weeks, a good water tank stops being a luxury very quickly. It becomes something you genuinely cannot do without.</p>
+
+            <p>But here’s where a lot of first-time buyers go wrong — they focus entirely on price and miss the things that actually matter: the right capacity, the right material, and whether the tank will hold up five years from now. This guide cuts through the noise so you can make a sensible decision the first time.</p>
+
+            <h3>Why Getting the Right Water Tank in Kenya Actually Matters</h3>
+            <p>Kenya’s water situation varies wildly by region. Mombasa faces different challenges to a rural property in Kisumu. What works for a single-room rental in Kibera won’t work for a three-bedroom home in Karen.</p>
+
+            <p>Buying the wrong tank means you either run dry mid-week or pay for storage you never use. Neither is ideal. The best water tanks in Kenya aren’t just the ones with the biggest brand name — they’re the ones sized and built for where you actually live.</p>
+
+            <h3>Types of Water Tanks Available in Kenya</h3>
+            <p><strong>Plastic Polyethylene Tanks</strong><br>
+            These are by far the most common tanks in Kenya, and for good reason. They’re affordable, lightweight, and resistant to rust. Brands like Roto and Jumbo produce polyethylene tanks across a wide range of capacities.</p>
+            <p><em>Best for:</em></p>
+            <ul>
+                <li>Residential homes</li>
+                <li>Rental properties</li>
+                <li>Small commercial use</li>
+            </ul>
+            <p><em>Key sizes available:</em> 500 litres, 1,000 litres, 2,000 litres, 5,000 litres, and up to 10,000 litres</p>
+
+            <p><strong>Steel Water Tanks</strong><br>
+            Corrugated steel tanks are popular in rural Kenya and for large-scale agricultural or commercial storage. They hold significantly more water and last a long time when properly lined.</p>
+            <p><em>Best for:</em></p>
+            <ul>
+                <li>Farms and large properties</li>
+                <li>Schools and institutions</li>
+                <li>Commercial operations needing 50,000+ litres</li>
+            </ul>
+
+            <p><strong>Underground Water Tanks</strong><br>
+            These are less common but worth knowing about. Underground tanks are ideal where space is limited or where aesthetics matter. They stay cooler, which slows algae growth. The installation cost is higher, but they’re barely noticeable once fitted.</p>
+
+            <h3>What Capacity Do You Actually Need?</h3>
+            <p>This is the question most buyers skip — and then regret. Here’s a simple way to think about it:</p>
+            <ul>
+                <li><strong>1–2 people:</strong> A 500–1,000 litre tank covers roughly 3–5 days of normal household use</li>
+                <li><strong>Family of 4–6:</strong> You’re looking at a minimum of 2,000 litres, ideally 5,000 if your supply is unreliable</li>
+                <li><strong>Rental property or block of flats:</strong> Calculate per unit and multiply — most landlords underestimate this significantly</li>
+                <li><strong>Commercial or industrial use:</strong> Get a professional assessment; getting this wrong is expensive</li>
+            </ul>
+            <p>A household in Thika with a borehole and a reliable supply needs less storage than one in Machakos relying solely on county water. Know your situation before you pick a number.</p>
+
+            <h3>How to Choose the Best Water Tanks in Kenya</h3>
+            <p><strong>Check the Material Grade</strong><br>
+            Not all polyethene is equal. Food-grade plastic is non-negotiable for drinking water storage. Always confirm this before purchasing. Reputable suppliers of water tanks in Kenya will display this specification clearly.</p>
+
+            <p><strong>Look at Wall Thickness</strong><br>
+            Thinner walls flex under pressure, especially when the tank is full. A good quality tank should feel solid, not flimsy, when you knock on the side. This matters more in outdoor settings where the tank is exposed to heat.</p>
+
+            <p><strong>UV Resistance</strong><br>
+            Kenya’s sun is intense. Tanks that aren’t UV-stabilised go brittle over time and can crack, leach chemicals into your water, or develop algae problems. Most reputable tanks in Kenya come UV-stabilised as standard, but it’s always worth confirming.</p>
+
+            <p><strong>Warranty and After-Sales Support</strong><br>
+            A decent tank should come with at least a five-year warranty. Any supplier who can’t clearly explain their warranty terms is a supplier to avoid.</p>
+
+            <h3>Common Mistakes First-Time Buyers Make</h3>
+            <ul>
+                <li><strong>Buying too small</strong> — Most people underestimate how quickly a tank empties during a dry spell</li>
+                <li><strong>Ignoring the base</strong> — A tank needs a solid, level foundation. A poor base causes uneven pressure and early failure</li>
+                <li><strong>Skipping the lid check</strong> — A poorly fitted lid lets in insects, debris, and light (which encourages algae)</li>
+                <li><strong>Choosing on price alone</strong> — The cheapest option usually costs more in the long run through replacements and repairs</li>
+            </ul>
+
+            <h3>Where to Buy Water Tanks in Kenya</h3>
+            <p>You’ll find tanks sold through hardware shops, direct from manufacturers, and online. The safest bet is buying from an established supplier with a physical presence and clear product specifications. Jumbo Quality is one of the better-known names offering a range of plastic tanks suited for both residential and commercial use — you can browse their range at jumboquality.com.</p>
+
+            <h3>Conclusion</h3>
+            <p>The best water tank in Kenya for your situation isn’t necessarily the biggest or the most expensive. It’s the one with the right capacity, built from quality material, bought from a supplier who’ll still be around if something goes wrong.</p>
+            <p>Get the capacity right first, confirm the material specs, and don’t skip the warranty conversation. Do that, and you’ll have a tank that serves you well for years rather than one you’re replacing in three.</p>
+
+            <div class="post-tags"><strong>Tag:</strong> Water Tanks for Sale in Kenya</div>
+
+            <!-- POST NAVIGATION -->
+            <div class="post-nav">
+                <div class="prev"><a href="#">&larr; Previous Post<br><small>5 Signs Your Current Water Tank Needs an Upgrade in Kenya</small></a></div>
+                <div class="next"><a href="#">Next Post &rarr;<br><small>Everything You Need to Know About Loft Water Tanks in Kenya</small></a></div>
             </div>
-            <div class="cat-card">
-                <img src="8.webp" alt="Handwash">
-                <div class="text-wrap">
-                    <h3>Handwash Solutions</h3>
-                    <p>Simple handwash products to promote cleanliness and hygiene.</p>
-                </div>
+
+            <!-- COMMENT SECTION -->
+            <div class="comment-section">
+                <h3>Leave a Reply</h3>
+                <p style="color:#666;font-size:14px;margin-bottom:15px;">Your email address will not be published. Required fields are marked <span class="req">*</span></p>
+                <form class="comment-form">
+                    <textarea placeholder="Comment *" required></textarea>
+                    <div class="comment-form-row">
+                        <input type="text" placeholder="Name *" required>
+                        <input type="email" placeholder="Email *" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Post Comment</button>
+                </form>
             </div>
-            <div class="cat-card">
-                <img src="9.webp" alt="Pots">
-                <div class="text-wrap">
-                    <h3>Pots</h3>
-                    <p>Stylish pots that help your plants thrive beautifully.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="savings-banner">
-            <div class="savings-text">
-                “Enjoy exclusive savings on bulk orders of POA Tanks! Call us now on 0787 030992”
-            </div>
-            <a href="shop.html" class="savings-btn">Shop Now</a>
-        </div>
-    </div>
-
-    <!-- BANNER 1 -->
-    <div class="banner-full"><img src="banner1.webp" alt="Why POATANK"></div>
-
-    <!-- LOFT TANKS -->
-    <div class="container">
-        <h2 class="section-title">Loft Tanks</h2>
-        <div class="prod-grid">
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="10.webp"><div class="prod-title">1000 LTRS POA LOFT WATER STORAGE TANKS</div><div class="prod-price">KSh22,187.00 <del>KSh27,734.00</del></div></div>
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="10.webp"><div class="prod-title">700 LTRS POA LOFT WATER STORAGE TANKS</div><div class="prod-price">KSh18,071.00 <del>KSh22,589.00</del></div></div>
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="10.webp"><div class="prod-title">450 LTRS POA LOFT WATER STORAGE TANKS</div><div class="prod-price">KSh14,313.00 <del>KSh17,891.00</del></div></div>
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="10.webp"><div class="prod-title">250 LTRS POA LOFT WATER STORAGE TANKS</div><div class="prod-price">KSh8,878.00 <del>KSh10,848.00</del></div></div>
-        </div>
-    </div>
-
-    <!-- BANNER 2 -->
-    <div class="banner-full"><img src="banner2.webp" alt="Superbrands"></div>
-
-    <!-- CUSTOMISED PRODUCTS -->
-    <div class="container">
-        <h2 class="section-title">Customised Products</h2>
-        <div class="prod-grid">
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="14.webp"><div class="prod-title">HANDWASH WITH TAP 250LTRS (LOFT)</div><div class="prod-price">KSh17,301.00 <del>KSh21,626.00</del></div></div>
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="15.webp"><div class="prod-title">250 LTRS POA CYLINDRICAL VERT TANK WITH TAP</div><div class="prod-price">KSh11,534.00 <del>KSh14,418.00</del></div></div>
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="16.webp"><div class="prod-title">WATER CANNISTER 30L WITH TAP</div><div class="prod-price">KSh6,861.00 <del>KSh8,576.00</del></div></div>
-            <div class="prod-card"><span class="discount-badge">20% off</span><img src="16.webp"><div class="prod-title">WATER CANNISTER SET COMPLETE (APPROX 30LTRS)</div><div class="prod-price">KSh9,720.00 <del>KSh12,150.00</del></div></div>
-        </div>
-    </div>
-
-    <!-- BEST-SELLING SECTION -->
-    <div class="container">
-        <h2 class="section-title">Best-Selling Products</h2>
-        
-        <div class="filter-tabs">
-            <button class="filter-tab active" onclick="filterBestSellers('cylindrical')">Cylindrical Tanks</button>
-            <button class="filter-tab" onclick="filterBestSellers('dustbins')">Dustbins</button>
-            <button class="filter-tab" onclick="filterBestSellers('containers')">Containers</button>
-            <button class="filter-tab" onclick="filterBestSellers('buckets')">Buckets / Pots</button>
-            <button class="filter-tab" onclick="filterBestSellers('troughs')">Troughs</button>
-            <button class="filter-tab" onclick="filterBestSellers('handwash')">Handwash Solutions</button>
-            <button class="filter-tab" onclick="filterBestSellers('loft')">Loft Tanks</button>
-            <button class="filter-tab" onclick="filterBestSellers('underground')">Underground Tanks</button>
-        </div>
-
-        <div class="prod-grid" id="bestSellerGrid">
-            <!-- Products injected by JavaScript -->
-        </div>
-
-        <div class="view-all">
-            <a href="shop.html" style="color: #002c8a; font-weight: 600; font-size: 14px; text-decoration: none;">View All Products &gt;</a>
         </div>
     </div>
 
@@ -532,88 +416,6 @@
         <button class="float-btn float-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
     </div>
 
-    <!-- BEST-SELLING SCRIPT -->
-    <script>
-        const bestSellerData = {
-            'cylindrical': [
-                { name: '12000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 197191, old: 246489 },
-                { name: 'SHORT 10000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 123063, old: 153829 },
-                { name: 'STD 10000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 123063, old: 153829 },
-                { name: '8000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 98102, old: 122628 }
-            ],
-            'dustbins': [
-                { name: 'POA Eco Bin 220 LITRS', img: '22.webp', price: 28580, old: 35725 },
-                { name: 'DUSTBIN 50LTRS COLOURS', img: '23.webp', price: 6954, old: 8693 },
-                { name: 'POA GARBAGE BIN WITH WHEELS', img: '24.webp', price: 6721, old: 8401 },
-                { name: 'DUSTBIN 70LTRS COLOURS', img: '25.webp', price: 9082, old: 11353 }
-            ],
-            'containers': [
-                { name: 'MILK CAN 50LTRS', img: '26.webp', price: 6056, old: 7570 },
-                { name: 'MILK CAN 50LTRS', img: '26.webp', price: 5150, old: 6438 },
-                { name: 'TRAILER TANK COMPLETE WITH TAP', img: '28.webp', price: 7065, old: 8831 }
-            ],
-            'buckets': [
-                { name: 'FLOWER BUCKET SQUARE (APPROX 42L)', img: '29.webp', price: 5328, old: 6660 },
-                { name: 'POA SHELL POT', img: '30.webp', price: 6538, old: 9220 },
-                { name: 'FLOWER BUCKET SQUARE (APPROX 38L)', img: '31.webp', price: 4808, old: 6010 },
-                { name: 'FLOWER BUCKET ROUND (APPROX 20L)', img: '32.webp', price: 2768, old: 3460 }
-            ],
-            'troughs': [
-                { name: 'POA LAUNDRY TROLLEY – HEAVY-DUTY PLASTIC, 133cm', img: '33.webp', price: 45045, old: 56306 },
-                { name: 'POA TP CRATE 780', img: '34.webp', price: 6519, old: 8149 },
-                { name: 'POA TP CRATE 456', img: '35.webp', price: 6519, old: 8149 },
-                { name: 'POA TP CRATE 123', img: '36.webp', price: 6519, old: 8149 }
-            ],
-            'handwash': [
-                { name: 'HANDWASH WITH TAP 250LTRS (LOFT)', img: '14.webp', price: 17301, old: 21626 },
-                { name: '250 LTRS POA CYLINDRICAL VERT TANK WITH TAP', img: '15.webp', price: 11534, old: 14418 },
-                { name: 'WATER CANNISTER 30L WITH TAP', img: '16.webp', price: 6861, old: 8576 },
-                { name: 'WATER CANNISTER SET COMPLETE (APPROX 30LTRS)', img: '16.webp', price: 9720, old: 12150 }
-            ],
-            'loft': [
-                { name: '1000 LTRS POA LOFT WATER STORAGE TANKS', img: '10.webp', price: 22187, old: 27734 },
-                { name: '700 LTRS POA LOFT WATER STORAGE TANKS', img: '10.webp', price: 18071, old: 22589 },
-                { name: '450 LTRS POA LOFT WATER STORAGE TANKS', img: '10.webp', price: 14313, old: 17891 },
-                { name: '250 LTRS POA LOFT WATER STORAGE TANKS', img: '10.webp', price: 8878, old: 10848 }
-            ],
-            'underground': [
-                { name: 'BELL 1500 LTRS UNDERGROUND TANK', img: '45.webp', price: 127163, old: 158954 },
-                { name: 'BELL 350 LTRS UNDERGROUND TANK', img: '45.webp', price: 98144, old: 122680 },
-                { name: 'BELL 230 LTRS UNDERGROUND TANK', img: '45.webp', price: 65559, old: 81949 },
-                { name: 'BELL 100 LTRS UNDERGROUND TANK', img: '45.webp', price: 32053, old: 40066 }
-            ]
-        };
-
-        function filterBestSellers(category) {
-            document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
-
-            const grid = document.getElementById('bestSellerGrid');
-            grid.innerHTML = '';
-            
-            const products = bestSellerData[category] || [];
-            products.forEach(p => {
-                const card = document.createElement('div');
-                card.className = 'prod-card';
-                card.innerHTML = `
-                    <span class="discount-badge">20% off</span>
-                    <img src="${p.img}" alt="${p.name}" onerror="this.src='https://placehold.co/300x300/eee/333?text=Image'">
-                    <div class="prod-title">${p.name}</div>
-                    <div class="prod-price">KSh${p.price.toLocaleString()} <del>KSh${p.old.toLocaleString()}</del></div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // Auto-click Cylindrical Tanks on page load
-        window.onload = function() {
-            // Programmatically trigger the click on the first tab
-            const firstTab = document.querySelector('.filter-tab.active');
-            if (firstTab) {
-                firstTab.click();
-            }
-        };
-    </script>
 
     <!-- MOBILE MENU SCRIPT (added) -->
     <script>
