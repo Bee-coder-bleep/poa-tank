@@ -332,7 +332,7 @@
     </div>
 
     <!-- QUICK ORDER: POA CYLINDRICAL VERT. TANK -->
-    <div class="container">
+    <div class="container" id="tankQuickOrderContainer">
         <div class="quick-order-widget">
             <div class="qow-media">
                 <img src="1.webp" alt="POA Cylindrical Vert. Tank">
@@ -525,15 +525,15 @@
             { id: 57, name: 'POA MOBILE TOILET WITH SEPTIC TANK', img: '42.webp', price: 25455, old: 31819, page: 5, brand: 'poa-customised', category: 'misc-roto' },
 
             // Page 6
-            { id: 58, name: 'POA Barbed Wire', img: '2.webp', price: 8500, old: 10625, page: 6, brand: 'poa-wire', category: 'barbed-wire' },
-            { id: 59, name: 'POA Chainlink', img: '17.webp', price: 12000, old: 15000, page: 6, brand: 'poa-wire', category: 'chainlink' },
+            { id: 58, name: 'POA Barbed Wire', img: '2.webp', price: 4850, old: 6063, page: 6, brand: 'poa-wire', category: 'barbed-wire' },
+            { id: 59, name: 'POA Chainlink', img: '17.webp', price: 17500, old: 21875, page: 6, brand: 'poa-wire', category: 'chainlink' },
             { id: 60, name: 'POA DUSTBIN 240 LTRS', img: '7.webp', price: 28580, old: 35725, page: 6, brand: 'poa-customised', category: 'dustbins' },
             { id: 61, name: 'POA GARBAGE BIN WITH WHEELS', img: '53.webp', price: 6721, old: 8401, page: 6, brand: 'poa-customised', category: 'dustbins' },
             { id: 62, name: 'POA TP CRATE 123', img: '7.webp', price: 6519, old: 8149, page: 6, brand: 'poa-customised', category: 'troughs' },
             { id: 63, name: 'POA TP CRATE 460', img: '6.webp', price: 6519, old: 8149, page: 6, brand: 'poa-customised', category: 'troughs' },
             { id: 64, name: 'POA TP CRATE 780', img: '36.webp', price: 6519, old: 8149, page: 6, brand: 'poa-customised', category: 'troughs' },
             { id: 65, name: 'POA MOBILE TOILET WITH SEPTIC TANK', img: '42.webp', price: 25455, old: 31819, page: 6, brand: 'poa-customised', category: 'misc-roto' },
-            { id: 66, name: 'POA Pipes', img: '4.webp', price: 7500, old: 9375, page: 6, brand: 'poa-pipes', category: 'pipes' },
+            { id: 66, name: 'POA Pipes', img: '4.webp', price: 240, old: 300, page: 6, brand: 'poa-pipes', category: 'pipes' },
             { id: 67, name: 'POA PIT COVER', img: '44.webp', price: 27620, old: 34525, page: 6, brand: 'poa-customised', category: 'misc-roto' },
             
             { id: 69, name: 'POA SUN LOUNGHER', img: '46.webp', price: 21668, old: 27085, page: 6, brand: 'poa-customised', category: 'misc-roto' },
@@ -682,6 +682,123 @@
             renderShop(1);
         }
 
+
+        // ======================== POA PIPES QUICK ORDER ========================
+        // Master price list for POA Pipes, grouped by pipe type.
+        // Ranged prices from the price list are stored as the midpoint of the range.
+        var pipeProducts = [
+            { group: 'HDPE Pipes (100m Roll)', label: '16mm (\u00bd") \u2013 Micro-irrigation & small lines', price: 1200 },
+            { group: 'HDPE Pipes (100m Roll)', label: '20mm (\u00be") \u2013 Standard farm & garden supply', price: 2080 },
+            { group: 'HDPE Pipes (100m Roll)', label: '25mm (1") \u2013 Domestic mainline connection', price: 2320 },
+            { group: 'HDPE Pipes (100m Roll)', label: '32mm (1-\u00bc") \u2013 Submersible pump discharge', price: 3560 },
+            { group: 'HDPE Pipes (100m Roll)', label: '40mm (1-\u00bd") \u2013 Commercial water transfer', price: 5156 },
+            { group: 'HDPE Pipes (100m Roll)', label: '50mm (2") \u2013 High-capacity farm intake', price: 7200 },
+            { group: 'HDPE Pipes (100m Roll)', label: '63mm (2-\u00bd") \u2013 Heavy-duty agricultural main', price: 11000 },
+            { group: 'HDPE Pipes (100m Roll)', label: '90mm (3") \u2013 Industrial distribution', price: 20800 },
+            { group: 'HDPE Pipes (100m Roll)', label: '110mm (4") \u2013 Major municipal & borehole line', price: 32000 },
+            { group: 'PVC & uPVC Pipes (per 6m Length)', label: '32mm (1") \u2013 Waste water discharge', price: 240 },
+            { group: 'PVC & uPVC Pipes (per 6m Length)', label: '40mm (1-\u00bc") \u2013 Sink & basin waste', price: 400 },
+            { group: 'PVC & uPVC Pipes (per 6m Length)', label: '50mm (1-\u00bd") \u2013 Shower & bath drainage', price: 560 },
+            { group: 'PVC & uPVC Pipes (per 6m Length)', label: '63mm (2") \u2013 Main waste stack', price: 880 },
+            { group: 'PVC & uPVC Pipes (per 6m Length)', label: '75mm (2-\u00bd") \u2013 Soil & waste collection', price: 1200 },
+            { group: 'PVC & uPVC Pipes (per 6m Length)', label: '90mm (3") \u2013 Downpipe & drainage', price: 1760 },
+            { group: 'PVC & uPVC Pipes (per 6m Length)', label: '110mm (4") \u2013 Main sewer line', price: 2160 },
+            { group: 'PPR Pipes (per 4m Length)', label: 'PN10 & PN20, 20mm\u2013110mm \u2013 Hot/cold plumbing', price: 1080 },
+            { group: 'Flexible Hose & Delivery Pipes', label: 'Flat Lay PVC Delivery Hose \u2013 2", 100m Roll', price: 10000 },
+            { group: 'Flexible Hose & Delivery Pipes', label: 'Canvas Delivery Pipe \u2013 3", 100m Roll', price: 17500 },
+            { group: 'Flexible Hose & Delivery Pipes', label: 'Clear Wired Suction Pipe \u2013 1", 30m Roll', price: 5600 },
+            { group: 'Flexible Hose & Delivery Pipes', label: 'Garden Hose Pipe Stripe \u2013 0.5", 60ft Roll', price: 780 }
+        ];
+
+        function initPipeQuickOrder() {
+            var select = document.getElementById('qowPipeType');
+            var priceEl = document.getElementById('qowPipePrice');
+            var btn = document.getElementById('qowPipeOrderBtn');
+            if (!select || !priceEl || !btn) return;
+
+            var html = '';
+            var lastGroup = null;
+            pipeProducts.forEach(function (p, i) {
+                if (p.group !== lastGroup) {
+                    if (lastGroup !== null) html += '</optgroup>';
+                    html += '<optgroup label="' + p.group + '">';
+                    lastGroup = p.group;
+                }
+                html += '<option value="' + i + '">' + p.label + '</option>';
+            });
+            html += '</optgroup>';
+            select.innerHTML = html;
+
+            var startIndex = 0;
+            var saved = sessionStorage.getItem('qowPipeSelectedIndex');
+            if (saved !== null && pipeProducts[saved]) startIndex = Number(saved);
+            select.value = startIndex;
+
+            function updateDisplay() {
+                var p = pipeProducts[select.value];
+                priceEl.textContent = 'KSh ' + p.price.toLocaleString();
+                sessionStorage.setItem('qowPipeSelectedIndex', select.value);
+                btn.onclick = function () {
+                    window.location.href = 'product-detail.html?id=66&variant=' + encodeURIComponent(p.label) + '&vprice=' + p.price;
+                };
+            }
+            select.addEventListener('change', updateDisplay);
+            updateDisplay();
+        }
+
+
+        // ======================== POA WIRE PRODUCTS QUICK ORDER ========================
+        // Master price list for POA Wire Products, grouped by product type.
+        // Ranged prices from the price list are stored as the midpoint of the range.
+        // 'id' links to the matching entry in product-detail.html's productDetailData.
+        var wireProducts = [
+            { group: 'Chain Link Fences (Per Roll)', id: 59, label: 'Light / Medium Gauge (7ft\u20138ft) \u2013 Residential compound & garden boundaries', price: 17500 },
+            { group: 'Chain Link Fences (Per Roll)', id: 59, label: 'Heavy Gauge Shamba/Standard (8ft\u201310ft, 11g\u201310g) \u2013 Industrial perimeter & heavy farm security', price: 35750 },
+            { group: 'Barbed Wires (Per Roll)', id: 58, label: 'Standard Rolls \u2013 General farm fencing & animal enclosures', price: 4850 },
+            { group: 'Barbed Wires (Per Roll)', id: 58, label: 'Heavy-duty / Long Coils \u2013 High-security perimeter installations', price: 13500 },
+            { group: 'Construction Binding Wires', id: 601, label: '16 Gauge (25Kg Roll) \u2013 Standard site structural rebar tying', price: 4200 },
+            { group: 'Construction Binding Wires', id: 601, label: 'Variable Weight Bundles (18Kg\u201325Kg) \u2013 General construction binding', price: 3440 },
+            { group: 'Wire Mesh (Welded & Hexagonal)', id: 602, label: 'Light / Medium Gauge Mesh \u2013 Chicken coops & light screening (per unit/meter)', price: 485 },
+            { group: 'Wire Mesh (Welded & Hexagonal)', id: 602, label: 'Heavy Gauge Mesh \u2013 Industrial partitions & reinforced caging (per unit/meter)', price: 875 },
+            { group: 'Wire Mesh (Welded & Hexagonal)', id: 602, label: 'BRC Fabric Mesh (e.g. Standard A142) \u2013 Concrete floor slabs & structural walls (per sheet)', price: 32000 }
+        ];
+
+        function initWireQuickOrder() {
+            var select = document.getElementById('qowWireType');
+            var priceEl = document.getElementById('qowWirePrice');
+            var btn = document.getElementById('qowWireOrderBtn');
+            if (!select || !priceEl || !btn) return;
+
+            var html = '';
+            var lastGroup = null;
+            wireProducts.forEach(function (p, i) {
+                if (p.group !== lastGroup) {
+                    if (lastGroup !== null) html += '</optgroup>';
+                    html += '<optgroup label="' + p.group + '">';
+                    lastGroup = p.group;
+                }
+                html += '<option value="' + i + '">' + p.label + '</option>';
+            });
+            html += '</optgroup>';
+            select.innerHTML = html;
+
+            var startIndex = 0;
+            var saved = sessionStorage.getItem('qowWireSelectedIndex');
+            if (saved !== null && wireProducts[saved]) startIndex = Number(saved);
+            select.value = startIndex;
+
+            function updateDisplay() {
+                var p = wireProducts[select.value];
+                priceEl.textContent = 'KSh ' + p.price.toLocaleString();
+                sessionStorage.setItem('qowWireSelectedIndex', select.value);
+                btn.onclick = function () {
+                    window.location.href = 'product-detail.html?id=' + p.id + '&variant=' + encodeURIComponent(p.label) + '&vprice=' + p.price;
+                };
+            }
+            select.addEventListener('change', updateDisplay);
+            updateDisplay();
+        }
+
         function updateBrandUI(brand) {
             const breadcrumb = document.getElementById('dynamicBreadcrumbs');
             const bannerArea = document.getElementById('brandBannerArea');
@@ -704,6 +821,21 @@
                 breadcrumbHtml = 'Home Page &nbsp; ➜ &nbsp; Poa Wire Products &nbsp; ➜ &nbsp; <span>All Products</span>';
                 bannerHtml = `<div class="brand-banner"><img src="banner5.webp" onerror="this.onerror=null;this.src='https://placehold.co/1350x250/002c8a/ffffff?text=Banner+Image'" alt="POA Wire Banner"></div>`;
                 featureHtml = `
+                    <div class="quick-order-widget">
+                        <div class="qow-media">
+                            <img src="2.webp" alt="POA Wire Products">
+                        </div>
+                        <div class="qow-info">
+                            <span class="qow-eyebrow">Quick Order</span>
+                            <h3>POA Wire Products</h3>
+                            <p>Pick a product &amp; spec to see the price, then order in one click.</p>
+                            <div class="qow-controls">
+                                <select id="qowWireType" class="qow-select"></select>
+                                <div class="qow-price" id="qowWirePrice"></div>
+                                <button class="qow-order-btn" id="qowWireOrderBtn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
                     <div class="feature-section">
                         <h2>Features Of POA WIRES</h2>
                         <div class="feature-layout">
@@ -723,6 +855,21 @@
                 breadcrumbHtml = 'Home Page &nbsp; ➜ &nbsp; Poa Pipes &nbsp; ➜ &nbsp; <span>All Products</span>';
                 bannerHtml = `<div class="brand-banner"><img src="banner6.webp" onerror="this.onerror=null;this.src='https://placehold.co/1350x250/002c8a/ffffff?text=Banner+Image'" alt="POA Pipes Banner"></div>`;
                 featureHtml = `
+                    <div class="quick-order-widget">
+                        <div class="qow-media">
+                            <img src="4.webp" alt="POA Pipes">
+                        </div>
+                        <div class="qow-info">
+                            <span class="qow-eyebrow">Quick Order</span>
+                            <h3>POA Pipes</h3>
+                            <p>Pick a pipe type &amp; size to see the price, then order in one click.</p>
+                            <div class="qow-controls">
+                                <select id="qowPipeType" class="qow-select"></select>
+                                <div class="qow-price" id="qowPipePrice"></div>
+                                <button class="qow-order-btn" id="qowPipeOrderBtn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
                     <div class="feature-section">
                         <h2>KEY FEATURES OF PLASTIC PIPES</h2>
                         <div class="sub">The selection of the appropriate plastic pipe will ultimately depend on its intended purpose, taking into account factors such as pressure requirements, temperature range, and the type of fluid or gas being transported.</div>
@@ -799,6 +946,20 @@
             bannerArea.innerHTML = bannerHtml;
             featureArea.innerHTML = featureHtml;
             subTabArea.innerHTML = subTabsHtml;
+
+            // The pipes / chainlink / barbed wire (poa-wire) widgets replace the
+            // tank quick-order widget on their pages rather than stacking with it.
+            const tankWidget = document.getElementById('tankQuickOrderContainer');
+            if (tankWidget) {
+                tankWidget.style.display = (brand === 'poa-pipes' || brand === 'poa-wire') ? 'none' : '';
+            }
+
+            if (brand === 'poa-pipes') {
+                initPipeQuickOrder();
+            }
+            if (brand === 'poa-wire') {
+                initWireQuickOrder();
+            }
         }
 
         function applySubCategory(sub) {
