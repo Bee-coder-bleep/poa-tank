@@ -13,6 +13,13 @@
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
 
+        /* === TOP CONTACT BAR === */
+        .top-bar { background: #002c8a; color: #fff; font-size: 13px; }
+        .top-bar .container { display: flex; justify-content: flex-end; align-items: center; gap: 20px; padding-top: 6px; padding-bottom: 6px; flex-wrap: wrap; }
+        .top-bar a { color: #fff; font-weight: 600; }
+        .top-bar a:hover { color: #cfe0ff; }
+        .top-bar span { display: inline-flex; align-items: center; gap: 6px; }
+
         /* === NAVBAR & DROPDOWNS === */
         nav { background: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1150; }
         .logo img { height: 50px; }
@@ -296,9 +303,17 @@
     </script>
 </head>
 <body>
+    <!-- TOP CONTACT BAR -->
+    <div class="top-bar">
+        <div class="container">
+            <span>📞 +254 787 030992</span>
+            <span>✉ <a href="mailto:sales@poatank.com">sales@poatank.com</a></span>
+        </div>
+    </div>
+
     <!-- NAVBAR -->
     <nav>
-        <div class="logo"><img src="logo.webp" alt="Jumbo Logo"></div>
+        <div class="logo"><a href="index.html" aria-label="Home"><img src="logo.webp" alt="Jumbo Logo"></a></div>
         <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
             <span></span><span></span><span></span>
         </button>
@@ -530,7 +545,7 @@
                     <img src="logo2.webp" alt="Tridah Group" style="border-radius:50%;border:2px solid white;">
                 </div>
                 <div class="footer-contact">📞 +254-787-030-992</div>
-                <div class="footer-contact">✉ poatankfactory@gmail.com</div>
+                <div class="footer-contact">✉ sales@poatank.com</div>
                 <div class="footer-socials"><a href="#">f</a><a href="#">📷</a></div>
             </div>
             <div class="footer-col">
@@ -574,10 +589,10 @@
     <script>
         const bestSellerData = {
             'cylindrical': [
-                { name: '12000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 138500, old: 173125 },
-                { name: 'SHORT 10000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 123063, old: 153829 },
-                { name: 'STD 10000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 123063, old: 153829 },
-                { name: '8000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 42200, old: 52750 }
+                { name: '12000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 70789, old: 88486 },
+                { name: 'SHORT 10000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 59100, old: 73875 },
+                { name: 'STD 10000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 59100, old: 73875 },
+                { name: '8000 LTRS POA CYLINDRICAL VERT. TANK', img: '1.webp', price: 47411, old: 59264 }
             ],
             'dustbins': [
                 { name: 'POA Eco Bin 220 LITRS', img: '22.webp', price: 28580, old: 35725 },
@@ -729,19 +744,20 @@
         var cylindricalTanks = [
             { cap: '1,000 L',  id: 501, price: 6500 },
             { cap: '1,500 L',  id: 502, price: 10500 },
-            { cap: '2,000 L',  id: 503, price: 12300 },
+            { cap: '2,000 L',  id: 503, price: 12344 },
             { cap: '2,500 L',  id: 504, price: 15400 },
-            { cap: '3,000 L',  id: 5,   price: 18800 },
-            { cap: '4,000 L',  id: 505, price: 24000 },
-            { cap: '5,000 L',  id: 10,  price: 29900 },
-            { cap: '6,000 L',  id: 13,  price: 35700 },
+            { cap: '3,000 L',  id: 5,   price: 18189 },
+            { cap: '4,000 L',  id: 505, price: 24033 },
+            { cap: '5,000 L',  id: 10,  price: 29878 },
+            { cap: '6,000 L',  id: 13,  price: 35722 },
             { cap: '7,500 L',  id: 506, price: 40100 },
-            { cap: '8,000 L',  id: 507, price: 42200 },
-            { cap: '10,000 L', id: 17,  price: 123063 },
-            { cap: '12,000 L', id: 2,   price: 138500 },
-            { cap: '15,000 L', id: 508, price: 185000 },
-            { cap: '16,000 L', id: 509, price: 248371 },
-            { cap: '24,000 L', id: 510, price: 300000 }
+            { cap: '8,000 L',  id: 507, price: 47411 },
+            { cap: '10,000 L', id: 17,  price: 59100 },
+            { cap: '12,000 L', id: 2,   price: 70789 },
+            { cap: '15,000 L', id: 508, price: 82330 },
+            { cap: '16,000 L', id: 509, price: 94167 },
+            { cap: '20,000 L', id: 511, price: 117544 },
+            { cap: '24,000 L', id: 510, price: 140922 }
         ];
 
         function initQuickOrder() {
